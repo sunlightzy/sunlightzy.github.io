@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>Mac后端开发环境搭建 | JerrySimple</title>
+  <meta name="description" content="Mac 后端入门开发环境搭建作为一个开发人员，选择 Mac 是一个非常好的选择，首先 Mac 是 Unix 的内核，支持 Unix 内核的命令，使用 Mac 能帮助我们熟悉 Unix 的操作命令 1、HomeBrew1.1 简介Homebrew是一款Mac OS平台下的软件包管理工具，拥有安装、卸载、更新、查看、搜索等很多实用的功能。简单的一条指令，就可以实现包管理，而不用你关心各种依赖和文件路径">
+<meta name="keywords" content="mac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac后端开发环境搭建">
+<meta property="og:url" content="https://blog.milk4j.com/2018/04/14/Mac后端开发环境搭建/index.html">
+<meta property="og:site_name" content="Jerry Simple">
+<meta property="og:description" content="Mac 后端入门开发环境搭建作为一个开发人员，选择 Mac 是一个非常好的选择，首先 Mac 是 Unix 的内核，支持 Unix 内核的命令，使用 Mac 能帮助我们熟悉 Unix 的操作命令 1、HomeBrew1.1 简介Homebrew是一款Mac OS平台下的软件包管理工具，拥有安装、卸载、更新、查看、搜索等很多实用的功能。简单的一条指令，就可以实现包管理，而不用你关心各种依赖和文件路径">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-22T02:06:53.951Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac后端开发环境搭建">
+<meta name="twitter:description" content="Mac 后端入门开发环境搭建作为一个开发人员，选择 Mac 是一个非常好的选择，首先 Mac 是 Unix 的内核，支持 Unix 内核的命令，使用 Mac 能帮助我们熟悉 Unix 的操作命令 1、HomeBrew1.1 简介Homebrew是一款Mac OS平台下的软件包管理工具，拥有安装、卸载、更新、查看、搜索等很多实用的功能。简单的一条指令，就可以实现包管理，而不用你关心各种依赖和文件路径">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://blog.milk4j.com/2018/04/14/Mac后端开发环境搭建/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Jerry Simple" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/sunlightzy" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpeg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Jerry Simple</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">雨天配抄书,代码配咖啡</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> HangZhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech="">
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/sunlightzy" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope="" itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/mac/" style="font-size: 13px;">mac</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/04/14/Mac后端开发环境搭建/" class="title">Mac后端开发环境搭建</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-04-14T02:01:56.000Z" itemprop="datePublished">2018-04-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/hexo/">hexo</a>
+              </p>
+              <p class="item-title">
+                <a href="/2015/04/21/Hexo基本使用/" class="title">Hexo基本使用</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2015-04-21T15:20:36.000Z" itemprop="datePublished">2015-04-21</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope="" itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mac-后端入门开发环境搭建"><span class="toc-number">1.</span> <span class="toc-text">Mac 后端入门开发环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、HomeBrew"><span class="toc-number">1.1.</span> <span class="toc-text">1、HomeBrew</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-简介"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-安装与卸载"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 安装与卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#卸载"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">卸载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#友情提示"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">友情提示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Cakebrew"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 Cakebrew</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-homebrew-cask"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4  homebrew-cask</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、iTerm2"><span class="toc-number">1.2.</span> <span class="toc-text">2、iTerm2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-简介"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-iTerm2-常用快捷键"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2  iTerm2 常用快捷键</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、安装OH-MY-ZSH"><span class="toc-number">1.3.</span> <span class="toc-text">3、安装OH MY ZSH</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置"><span class="toc-number">1.3.2.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改zsh主题"><span class="toc-number">1.3.3.</span> <span class="toc-text">更改zsh主题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、安装JDK"><span class="toc-number">1.4.</span> <span class="toc-text">4、安装JDK</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-2"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">安装</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、安装-Maven"><span class="toc-number">1.5.</span> <span class="toc-text">5、安装 Maven</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-3"><span class="toc-number">1.5.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#验证"><span class="toc-number">1.5.2.</span> <span class="toc-text">验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置-1"><span class="toc-number">1.5.3.</span> <span class="toc-text">配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、安装-Redis"><span class="toc-number">1.6.</span> <span class="toc-text">6、安装 Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-4"><span class="toc-number">1.6.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#验证-1"><span class="toc-number">1.6.2.</span> <span class="toc-text">验证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7、安装MySQL"><span class="toc-number">1.7.</span> <span class="toc-text">7、安装MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-5"><span class="toc-number">1.7.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#验证-2"><span class="toc-number">1.7.2.</span> <span class="toc-text">验证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8、安装-ElasticSearch"><span class="toc-number">1.8.</span> <span class="toc-text">8、安装 ElasticSearch</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-6"><span class="toc-number">1.8.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#验证-3"><span class="toc-number">1.8.2.</span> <span class="toc-text">验证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9、安装Nginx"><span class="toc-number">1.9.</span> <span class="toc-text">9、安装Nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-7"><span class="toc-number">1.9.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#验证-4"><span class="toc-number">1.9.2.</span> <span class="toc-text">验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改配置文件"><span class="toc-number">1.9.3.</span> <span class="toc-text">修改配置文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10、安装-SEQUEL-PRO"><span class="toc-number">1.10.</span> <span class="toc-text">10、安装 SEQUEL PRO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-8"><span class="toc-number">1.10.1.</span> <span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11、安装-IntelliJ-IDEA"><span class="toc-number">1.11.</span> <span class="toc-text">11、安装 IntelliJ IDEA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-9"><span class="toc-number">1.11.1.</span> <span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12、安装-Zookeeper"><span class="toc-number">1.12.</span> <span class="toc-text">12、安装 Zookeeper</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-10"><span class="toc-number">1.12.1.</span> <span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13、LaunchRocket"><span class="toc-number">1.13.</span> <span class="toc-text">13、LaunchRocket</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">1.13.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-11"><span class="toc-number">1.13.2.</span> <span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14、一些其他实用软件"><span class="toc-number">1.14.</span> <span class="toc-text">14、一些其他实用软件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#办公："><span class="toc-number">1.14.1.</span> <span class="toc-text">办公：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上班必备"><span class="toc-number">1.14.2.</span> <span class="toc-text">上班必备</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Mac后端开发环境搭建" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mac后端开发环境搭建
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/04/14/Mac后端开发环境搭建/" class="article-date">
+	  <time datetime="2018-04-14T02:01:56.000Z" itemprop="datePublished">2018-04-14</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/mac/">mac</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/04/14/Mac后端开发环境搭建/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="Mac-后端入门开发环境搭建"><a href="#Mac-后端入门开发环境搭建" class="headerlink" title="Mac 后端入门开发环境搭建"></a>Mac 后端入门开发环境搭建</h1><p><code>作为一个开发人员，选择 Mac 是一个非常好的选择，首先 Mac 是 Unix 的内核，支持 Unix 内核的命令，使用 Mac 能帮助我们熟悉 Unix 的操作命令</code></p>
+<h2 id="1、HomeBrew"><a href="#1、HomeBrew" class="headerlink" title="1、HomeBrew"></a>1、HomeBrew</h2><h3 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h3><p><code>Homebrew是一款Mac OS平台下的软件包管理工具，拥有安装、卸载、更新、查看、搜索等很多实用的功能。简单的一条指令，就可以实现包管理，而不用你关心各种依赖和文件路径的情况，十分方便快捷。</code></p>
+<p><code>简单点说，Homebrew 是以最简单、最灵活的方式来安装苹果公司在 MacOS 中不包含的 UNIX 工具。</code></p>
+<h3 id="1-2-安装与卸载"><a href="#1-2-安装与卸载" class="headerlink" title="1.2 安装与卸载"></a>1.2 安装与卸载</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>打开终端，复制粘贴，大约1分钟左右，下载完成，过程中需要输入密码，其他无需任何操作：</p>
+<p><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></p>
+<h4 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h4><p>有安装就要有卸载，打开终端，复制粘贴： </p>
+<p><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)&quot;</code></p>
+<p>其实只用把上面安装的install换成uninstall就行了。</p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>Homebrew 常用命令，下面以安装 git 为例（使用 brew 安装默认安装软件包的最新版本）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">安装任意软件包：</span><br><span class="line">brew install git</span><br><span class="line">卸载已安装软件包：</span><br><span class="line">brew uninstall git</span><br><span class="line">搜索可用软件包：</span><br><span class="line">brew search git</span><br><span class="line">查看任意软件包信息：</span><br><span class="line">brew info git</span><br><span class="line">更新已安装的软件包：</span><br><span class="line">brew upgrade git</span><br><span class="line">查看所有已安装的软件包：</span><br><span class="line">brew list</span><br><span class="line">更新 Homebrew：</span><br><span class="line">brew update</span><br><span class="line">查看 HomeBrew 版本：</span><br><span class="line">brew -v</span><br><span class="line">HomeBrew 帮助信息：</span><br><span class="line">brew -h</span><br></pre></td></tr></table></figure>
+<p>使用 <code>brew -h</code> 看下官方帮助：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> brew -h</span></span><br><span class="line">Example usage:</span><br><span class="line">  brew search [TEXT|/REGEX/]</span><br><span class="line">  brew info [FORMULA...]</span><br><span class="line">  brew install FORMULA...</span><br><span class="line">  brew update</span><br><span class="line">  brew upgrade [FORMULA...]</span><br><span class="line">  brew uninstall FORMULA...</span><br><span class="line">  brew list [FORMULA...]</span><br><span class="line"></span><br><span class="line">Troubleshooting:</span><br><span class="line">  brew config</span><br><span class="line">  brew doctor</span><br><span class="line">  brew install --verbose --debug FORMULA</span><br><span class="line"></span><br><span class="line">Contributing:</span><br><span class="line">  brew create [URL [--no-fetch]]</span><br><span class="line">  brew edit [FORMULA...]</span><br><span class="line"></span><br><span class="line">Further help:</span><br><span class="line">  brew commands</span><br><span class="line">  brew help [COMMAND]</span><br><span class="line">  man brew</span><br><span class="line">  https://docs.brew.sh</span><br></pre></td></tr></table></figure>
+<h4 id="友情提示"><a href="#友情提示" class="headerlink" title="友情提示"></a>友情提示</h4><p>在<code>Mac OS X 10.11</code>系统以后，<code>/usr/local/</code>等系统目录下的文件读写是需要系统root权限的，以往的Homebrew安装如果没有指定安装路径，会默认安装在这些需要系统root用户读写权限的目录下，导致有些指令需要添加sudo前缀来执行，比如升级Homebrew需要：<code>sudo brew update</code></p>
+<p><strong>推荐:</strong>   安装Homebrew时对安装路径进行指定，直接安装在不需要系统root用户授权就可以自由读写的目录下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby &lt;install path&gt; -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span><br></pre></td></tr></table></figure>
+<p>下面是我的 HomeBrew 的版本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> brew -v</span></span><br><span class="line">Homebrew 1.6.0</span><br><span class="line">Homebrew/homebrew-core (no git repository)</span><br></pre></td></tr></table></figure>
+<p>默认安装的所有的命令都在<code>/usr/local/bin</code>目录下，安装文件都在<code>/usr/local/Cellar</code>下，对应的配置文件都在<code>/usr/local/etc</code>下</p>
+<h3 id="1-3-Cakebrew"><a href="#1-3-Cakebrew" class="headerlink" title="1.3 Cakebrew"></a>1.3 Cakebrew</h3><p>Cakebrew 是 HomeBrew 的 GUI 版本，提供图形化的方式安装和管理软件包，安装方式：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install cakebrew</span><br></pre></td></tr></table></figure>
+<h3 id="1-4-homebrew-cask"><a href="#1-4-homebrew-cask" class="headerlink" title="1.4  homebrew-cask"></a>1.4  homebrew-cask</h3><p>homebrew-cask安装常用软件，比在网上下载安装文件安装的优势在于：<br>（1）节省下载安装包的过程，一行命令即可安装<br>（2）一些在网上搜不到安装文件的软件也可以通过这种方法安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap phinze/homebrew-cask</span><br><span class="line">brew install brew-cask</span><br></pre></td></tr></table></figure>
+<p>使用方法：将上面的brew换成brew cask即可，如</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install qq</span><br></pre></td></tr></table></figure>
+<p>使用 brew cask 安装常用的软件：</p>
+<p>brew cask 搜索地址 <a href="https://caskroom.github.io/search" target="_blank" rel="noopener">https://caskroom.github.io/search</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">brew cask install yy</span><br><span class="line">brew cask install qq</span><br><span class="line">brew cask install dash # 帮助文档</span><br><span class="line">brew cask install atom</span><br><span class="line">brew cask install sequel-pro # mysql可视化工具</span><br><span class="line">brew cask install sourcetree # git可视化工具</span><br><span class="line">brew cask install neteasemusic # 网易云音乐</span><br><span class="line">brew cask install android-file-transfer # android 传输工具</span><br><span class="line">brew cask install android-studio</span><br><span class="line">brew cask install intellij-idea</span><br><span class="line">brew cask install visual-studio-code</span><br><span class="line">brew cask install mockplus # 比较不错的画原型工具</span><br><span class="line">brew cask install alfred # 小红帽</span><br><span class="line">brew cask install the-unarchiver # 压缩工具</span><br><span class="line">brew cask install thunder # 迅雷</span><br><span class="line">brew cask install mplayerx # 播放器</span><br><span class="line">brew cask install iterm2 # mac上最好用的终端</span><br><span class="line">brew cask install cd-to # 当前目录在终端显示</span><br><span class="line">brew cask install duet # ipad做外接显示器</span><br><span class="line">brew cask install ckb # 海盗船机械键盘驱动</span><br><span class="line">brew cask install shadowsocksx # 翻墙工具</span><br><span class="line">brew cask install firefox # 火狐</span><br><span class="line">brew cask install foxmail # 邮箱客户端</span><br><span class="line">brew cask install rdm # redis 客户端</span><br><span class="line">brew cask install typora # markdown工具</span><br><span class="line">brew cask install macdown</span><br><span class="line">brew cask install cyberduck # ftp工具</span><br><span class="line">brew cask install bearychat</span><br></pre></td></tr></table></figure>
+<h2 id="2、iTerm2"><a href="#2、iTerm2" class="headerlink" title="2、iTerm2"></a>2、iTerm2</h2><h3 id="2-1-简介"><a href="#2-1-简介" class="headerlink" title="2.1 简介"></a>2.1 简介</h3><p>ITERM2 是 MAC 下最好的终端工具。直接去<a href="https://www.iterm2.com/" target="_blank" rel="noopener">官网</a>下载安装包安装即可使用。</p>
+<h3 id="2-2-iTerm2-常用快捷键"><a href="#2-2-iTerm2-常用快捷键" class="headerlink" title="2.2  iTerm2 常用快捷键"></a>2.2  iTerm2 常用快捷键</h3><ul>
+<li>切换 tab：⌘+← ，⌘+→  ，⌘+{  ， ⌘+} ，⌘+数字直接定位到该 tab</li>
+<li>新建 tab：⌘+t</li>
+<li>顺序切换 pane：⌘+[  ， ⌘+]</li>
+<li>按方向切换 pane：⌘+Option+方向键</li>
+<li>切分屏幕：⌘+d 水平切分，⌘+Shift+d 垂直切分</li>
+<li>智能查找，支持正则查找：⌘+f</li>
+</ul>
+<h2 id="3、安装OH-MY-ZSH"><a href="#3、安装OH-MY-ZSH" class="headerlink" title="3、安装OH MY ZSH"></a>3、安装OH MY ZSH</h2><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>ZSH 是一种Shell指令集，Mac 自带 ZSH 的安装。但 Oh my zsh 可以让你能更简便的配置 ZSH。 安装方式如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh</span><br></pre></td></tr></table></figure>
+<p>等待安装完成即可</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>设置 zsh 为系统的默认的 shell</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+<h3 id="更改zsh主题"><a href="#更改zsh主题" class="headerlink" title="更改zsh主题"></a>更改zsh主题</h3><p>编辑 <code>~/.zshrc</code> ，将文本中的 ZSH_THEME 修改为如下（个人推荐主题：ys）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZSH_THEME="ys"</span><br></pre></td></tr></table></figure>
+<p>注：主题文件在 <code>~/.oh-my-zsh/themes</code> 目录</p>
+<h2 id="4、安装JDK"><a href="#4、安装JDK" class="headerlink" title="4、安装JDK"></a>4、安装JDK</h2><h4 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h4><p>通过 HomeBrew 安装 JDK</p>
+<p>安装 jdk8 <code>brew cask info java8</code></p>
+<p>安装 jdk9 <code>brew cask info java9</code></p>
+<p><em>也可以通过<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">官网</a>下载安装包安装</em></p>
+<p>上述两个文件安装完成后，执行下述命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo "alias setJdk9='export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk9.0.4.jdk/Contents/Home'" &gt;&gt; ~/.zshrc</span><br><span class="line">echo "alias setJdk8='export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home'" &gt;&gt; ~/.zshrc</span><br><span class="line">echo "export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home"  &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>这样在命令行中默认设置当前环境变量为 <strong>JAVA 8</strong> , 当我们需要切换到 <strong>JAVA 9</strong> 时只需在命令行中执行命令 <strong>setJdk9</strong> 即可 。</p>
+<h2 id="5、安装-Maven"><a href="#5、安装-Maven" class="headerlink" title="5、安装 Maven"></a>5、安装 Maven</h2><h3 id="安装-3"><a href="#安装-3" class="headerlink" title="安装"></a>安装</h3><p>Maven 是Java生态中用来构建项目的工具。通过brew安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install maven</span><br></pre></td></tr></table></figure>
+<p>等待安装完成后即可</p>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>在命令行中输入下述命令验证MAVEN是否正确安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mvn -v</span></span><br><span class="line">Apache Maven 3.5.3 (3383c37e1f9e9b3bc3df5050c29c8aff9f295297; 2018-02-25T03:49:05+08:00)</span><br><span class="line">Maven home: /usr/local/Cellar/maven/3.5.3/libexec</span><br><span class="line">Java version: 1.8.0_161, vendor: Oracle Corporation</span><br><span class="line">Java home: /Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/jre</span><br><span class="line">Default locale: zh_CN, platform encoding: UTF-8</span><br><span class="line">OS name: "mac os x", version: "10.13.4", arch: "x86_64", family: "mac"</span><br></pre></td></tr></table></figure>
+<p>如果有以上输出内容即标识安装完成</p>
+<h3 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h3><p>在 ~/.m2 目录下创建 settings.xml 文件，使用阿里云的 maven 仓库，内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span><br><span class="line">          xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">          xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;pluginGroups&gt;&lt;/pluginGroups&gt;</span><br><span class="line">    &lt;proxies&gt;&lt;/proxies&gt;</span><br><span class="line">    &lt;servers&gt;&lt;/servers&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;mirrors&gt;</span><br><span class="line">        &lt;mirror&gt;</span><br><span class="line">            &lt;id&gt;nexus-aliyun&lt;/id&gt;</span><br><span class="line">            &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;</span><br><span class="line">            &lt;name&gt;Nexus aliyun&lt;/name&gt;</span><br><span class="line">            &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;</span><br><span class="line">        &lt;/mirror&gt;</span><br><span class="line">    &lt;/mirrors&gt;</span><br><span class="line"></span><br><span class="line">    &lt;profiles&gt;</span><br><span class="line">        &lt;profile&gt;</span><br><span class="line">            &lt;id&gt;JDK-1.8&lt;/id&gt;</span><br><span class="line">            &lt;activation&gt;</span><br><span class="line">                &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;</span><br><span class="line">                &lt;jdk&gt;1.8&lt;/jdk&gt;</span><br><span class="line">            &lt;/activation&gt;</span><br><span class="line">            &lt;properties&gt;</span><br><span class="line">                &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;</span><br><span class="line">                &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;</span><br><span class="line">                &lt;maven.compiler.compilerVersion&gt;1.8&lt;/maven.compiler.compilerVersion&gt;</span><br><span class="line">            &lt;/properties&gt;</span><br><span class="line">        &lt;/profile&gt;</span><br><span class="line">    &lt;/profiles&gt;</span><br><span class="line"></span><br><span class="line">    &lt;activeProfiles&gt;</span><br><span class="line">        &lt;activeProfile&gt;JDK-1.8&lt;/activeProfile&gt;</span><br><span class="line">    &lt;/activeProfiles&gt;</span><br><span class="line">&lt;/settings&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="6、安装-Redis"><a href="#6、安装-Redis" class="headerlink" title="6、安装 Redis"></a>6、安装 Redis</h2><p>Redis 是一款基于数据结构的内存数据库。在我们的项目中被用作高速集中式缓存的解决方案。</p>
+<h3 id="安装-4"><a href="#安装-4" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install redis</span><br></pre></td></tr></table></figure>
+<p>等待安装完成即可</p>
+<h3 id="验证-1"><a href="#验证-1" class="headerlink" title="验证"></a>验证</h3><p>在命令行中输入下述命令查看 reids 版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ redis-server -v                                                                                                                                                                        </span><br><span class="line">Redis server v=2.8.3 sha=00000000:0 malloc=libc bits=64 build=e836d8ad888e21a1</span><br></pre></td></tr></table></figure>
+<p>如果有以上输出内容即表示安装完成</p>
+<h2 id="7、安装MySQL"><a href="#7、安装MySQL" class="headerlink" title="7、安装MySQL"></a>7、安装MySQL</h2><p>Mysql 是业界主流的开源关系型数据库。在我们项目中用以持久化用户及系统数据。</p>
+<h3 id="安装-5"><a href="#安装-5" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mysql</span><br></pre></td></tr></table></figure>
+<p>等待安装完成即可</p>
+<h3 id="验证-2"><a href="#验证-2" class="headerlink" title="验证"></a>验证</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -V</span><br><span class="line">mysql  Ver 14.14 Distrib 5.6.15, for osx10.9 (x86_64) using  EditLine wrapper</span><br></pre></td></tr></table></figure>
+<p>如果有以上输出内容即表示安装完成</p>
+<h2 id="8、安装-ElasticSearch"><a href="#8、安装-ElasticSearch" class="headerlink" title="8、安装 ElasticSearch"></a>8、安装 ElasticSearch</h2><h3 id="安装-6"><a href="#安装-6" class="headerlink" title="安装"></a>安装</h3><p>Elasticsearch(简称ES）是一款基于lucene的全文搜索中间件。用于处理在大量文本中通过关键字搜索的场景（例如搜索商品、店铺等）。先在下面的链接中下载安装包（已集成相关插件）后解压, 将解压后的文件夹放到你想安装的目录。通过 brew 安装5.6版的 ES： </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install elasticsearch@5.6</span><br></pre></td></tr></table></figure>
+<h3 id="验证-3"><a href="#验证-3" class="headerlink" title="验证"></a>验证</h3><p>打开Iterm2，进入 elasticsearch的安装目录，执行以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./elasticsearch</span><br></pre></td></tr></table></figure>
+<p>就可以看到启动日志了</p>
+<h2 id="9、安装Nginx"><a href="#9、安装Nginx" class="headerlink" title="9、安装Nginx"></a>9、安装Nginx</h2><h3 id="安装-7"><a href="#安装-7" class="headerlink" title="安装"></a>安装</h3><p>Nginx 是一款轻量的高性能的Http与反向代理服务器。可被用作转发页面的请求至后台的Tomcat服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure>
+<p>等待安装完成即可</p>
+<h3 id="验证-4"><a href="#验证-4" class="headerlink" title="验证"></a>验证</h3><p>在命令行中输入下述命令验证 <strong>Nginx</strong> 是否正确安装 (版本可能有所不同)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ nginx -V</span><br><span class="line">nginx version: nginx/1.6.3</span><br><span class="line">built by clang 6.1.0 (clang-602.0.49) (based on LLVM 3.6.0svn)</span><br><span class="line">TLS SNI support enabled</span><br><span class="line">configure arguments: --prefix=/usr/local/Cellar/nginx/1.6.3 --with-http_ssl_module --with-pcre --with-ipv6 --sbin-path=/usr/local/Cellar/nginx/1.6.3/bin/nginx --with-cc-opt=&apos;-I/usr/local/Cellar/pcre/8.36/include -I/usr/local/Cellar/openssl/1.0.2a-1/include&apos; --with-ld-opt=&apos;-L/usr/local/Cellar/pcre/8.36/lib -L/usr/local/Cellar/openssl/1.0.2a-1/lib&apos; --conf-path=/usr/local/etc/nginx/nginx.conf --pid-path=/usr/local/var/run/nginx.pid --lock-path=/usr/local/var/run/nginx.lock --http-client-body-temp-path=/usr/local/var/run/nginx/client_body_temp --http-proxy-temp-path=/usr/local/var/run/nginx/proxy_temp --http-fastcgi-temp-path=/usr/local/var/run/nginx/fastcgi_temp --http-uwsgi-temp-path=/usr/local/var/run/nginx/uwsgi_temp --http-scgi-temp-path=/usr/local/var/run/nginx/scgi_temp --http-log-path=/usr/local/var/log/nginx/access.log --error-log-path=/usr/local/var/log/nginx/error.log --with-http_gzip_static_module</span><br></pre></td></tr></table></figure>
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#user  nobody;</span><br><span class="line">worker_processes  2;</span><br><span class="line"></span><br><span class="line">#error_log  logs/error.log;</span><br><span class="line">#error_log  logs/error.log  notice;</span><br><span class="line">#error_log  logs/error.log  info;</span><br><span class="line">#pid        logs/nginx.pid;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    #tcp_nopush     on;</span><br><span class="line">    #keepalive_timeout  0;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    gzip  on;</span><br><span class="line">    include servers/*.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="10、安装-SEQUEL-PRO"><a href="#10、安装-SEQUEL-PRO" class="headerlink" title="10、安装 SEQUEL PRO"></a>10、安装 SEQUEL PRO</h2><p>Sequel Pro 是一款免费的  MySQL 的图形管理工具。</p>
+<h3 id="安装-8"><a href="#安装-8" class="headerlink" title="安装"></a>安装</h3><p>在<a href="http://www.sequelpro.com/" target="_blank" rel="noopener">官网</a>可下载最新版本</p>
+<h2 id="11、安装-IntelliJ-IDEA"><a href="#11、安装-IntelliJ-IDEA" class="headerlink" title="11、安装 IntelliJ IDEA"></a>11、安装 IntelliJ IDEA</h2><p>IntelliJ IDEA 业界公认为最好的 Java 开发工具之一</p>
+<h3 id="安装-9"><a href="#安装-9" class="headerlink" title="安装"></a>安装</h3><p>【<a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener">官网</a>】，网上有很多破解方法，如果资金允许请支持正版</p>
+<h2 id="12、安装-Zookeeper"><a href="#12、安装-Zookeeper" class="headerlink" title="12、安装 Zookeeper"></a>12、安装 Zookeeper</h2><h3 id="安装-10"><a href="#安装-10" class="headerlink" title="安装"></a>安装</h3><p>通过 brew 安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install zookeeper</span><br></pre></td></tr></table></figure>
+<h2 id="13、LaunchRocket"><a href="#13、LaunchRocket" class="headerlink" title="13、LaunchRocket"></a>13、LaunchRocket</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>是一个帮助管理Homebrew安装的服务的软件，比如你使用brew安装的Mysql、Redis、MongoDB，LaunchRocket 可以管理这些服务的生命周期和启动方式（自启动、手动启动），传统方式需要使用命令行的命令，而使用LaunchRocket则可以在图形界面中进行管理。</p>
+<h3 id="安装-11"><a href="#安装-11" class="headerlink" title="安装"></a>安装</h3><p>brew 安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install launchrocket</span><br></pre></td></tr></table></figure>
+<h2 id="14、一些其他实用软件"><a href="#14、一些其他实用软件" class="headerlink" title="14、一些其他实用软件"></a>14、一些其他实用软件</h2><h3 id="办公："><a href="#办公：" class="headerlink" title="办公："></a>办公：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">markdown 编辑器：BoostNote、Typora、YuWriter、Mou</span><br><span class="line">文本编辑工具：Atom、Visual Studio Code、Sublime</span><br><span class="line">时间/项目管理工具：2Do、OmniPlan、OmniForce</span><br><span class="line">流程图绘制：OmniGraffle</span><br><span class="line">脑图绘制：Xmind、MindNode、iThoughtsX</span><br><span class="line">文稿编辑/演示： KeyNote、Pages、Scrivener、Quiver</span><br><span class="line">状态栏图标隐藏工具：Bartender3</span><br><span class="line">压缩工具：Dr.Unarchiver</span><br><span class="line">技术文档离线阅读：Dash</span><br><span class="line">效率搜索：Alfred3</span><br><span class="line">数据库管理工具：Sequel Pro、Navicat、TablePlus</span><br><span class="line">Git 的 GUI 工具：SourceTree、GitUp</span><br><span class="line">REST 客户端：Postman、Paw</span><br><span class="line">Hosts 切换管理工具：SwitchHosts</span><br></pre></td></tr></table></figure>
+<h3 id="上班必备"><a href="#上班必备" class="headerlink" title="上班必备"></a>上班必备</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">社交软件：微信、QQ、钉钉</span><br><span class="line">上班听音乐：网易云音乐、酷我音乐、QQ音乐</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://blog.milk4j.com/2018/04/14/Mac后端开发环境搭建/" title="Mac后端开发环境搭建" target="_blank" rel="external">https://blog.milk4j.com/2018/04/14/Mac后端开发环境搭建/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/sunlightzy" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpeg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/sunlightzy" target="_blank"><span class="text-dark">Jerry Simple</span><small class="ml-1x">雨天配抄书,代码配咖啡</small></a></h3>
+        <div>被编程耽误的歌手,业余艺术家</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom="">
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2015/04/21/Hexo基本使用/" title="Hexo基本使用"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope="" itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/sunlightzy" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <!-- <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div> -->
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
