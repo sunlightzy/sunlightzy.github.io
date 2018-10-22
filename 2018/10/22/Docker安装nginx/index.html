@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>Docker基本使用 | JerrySimple</title>
-  <meta name="description" content="一. docker使用1. docker ps 查看运行中的容器2. docker images 查看docker镜像3. docker rm id(容器id)  删除容器（容器id可以通过docker ps查看，容器必须停止后才能删除）3.1 删除全部的容器 docker rm docker ps -a -q4. docker stop  id(容器id) 停止容器运行5. docker rmi">
-<meta name="keywords" content="-docker">
+  <title>Docker安装nginx | JerrySimple</title>
+  <meta name="description" content="Docker 安装 nginx方式一：通过  pull 仓库镜像一、下载镜像1docker pull nginx 二、使用镜像创建容器1234567891011121314151617181920212223242526cd ~mkdir -p ~/nginx/www ~/nginx/logs ~/nginx/conf#www目录将映射为nginx容器配置的虚拟目录#logs目录将映射为nginx">
+<meta name="keywords" content="docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker基本使用">
-<meta property="og:url" content="https://blog.milk4j.com/2018/06/22/Docker基本使用/index.html">
+<meta property="og:title" content="Docker安装nginx">
+<meta property="og:url" content="https://blog.milk4j.com/2018/10/22/Docker安装nginx/index.html">
 <meta property="og:site_name" content="Jerry Simple">
-<meta property="og:description" content="一. docker使用1. docker ps 查看运行中的容器2. docker images 查看docker镜像3. docker rm id(容器id)  删除容器（容器id可以通过docker ps查看，容器必须停止后才能删除）3.1 删除全部的容器 docker rm docker ps -a -q4. docker stop  id(容器id) 停止容器运行5. docker rmi">
+<meta property="og:description" content="Docker 安装 nginx方式一：通过  pull 仓库镜像一、下载镜像1docker pull nginx 二、使用镜像创建容器1234567891011121314151617181920212223242526cd ~mkdir -p ~/nginx/www ~/nginx/logs ~/nginx/conf#www目录将映射为nginx容器配置的虚拟目录#logs目录将映射为nginx">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-22T03:27:44.304Z">
+<meta property="og:updated_time" content="2018-10-22T04:34:51.589Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker基本使用">
-<meta name="twitter:description" content="一. docker使用1. docker ps 查看运行中的容器2. docker images 查看docker镜像3. docker rm id(容器id)  删除容器（容器id可以通过docker ps查看，容器必须停止后才能删除）3.1 删除全部的容器 docker rm docker ps -a -q4. docker stop  id(容器id) 停止容器运行5. docker rmi">
+<meta name="twitter:title" content="Docker安装nginx">
+<meta name="twitter:description" content="Docker 安装 nginx方式一：通过  pull 仓库镜像一、下载镜像1docker pull nginx 二、使用镜像创建容器1234567891011121314151617181920212223242526cd ~mkdir -p ~/nginx/www ~/nginx/logs ~/nginx/conf#www目录将映射为nginx容器配置的虚拟目录#logs目录将映射为nginx">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://blog.milk4j.com/2018/06/22/Docker基本使用/index.html">
+  <link rel="canonical" href="https://blog.milk4j.com/2018/10/22/Docker安装nginx/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Jerry Simple" type="application/atom+xml">
   
@@ -327,21 +327,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一-docker使用"><span class="toc-number">1.</span> <span class="toc-text">一. docker使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-docker-ps-查看运行中的容器"><span class="toc-number">1.1.</span> <span class="toc-text">1. docker ps 查看运行中的容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-docker-images-查看docker镜像"><span class="toc-number">1.2.</span> <span class="toc-text">2. docker images 查看docker镜像</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-docker-rm-id-容器id-删除容器（容器id可以通过docker-ps查看，容器必须停止后才能删除）"><span class="toc-number">1.3.</span> <span class="toc-text">3. docker rm id(容器id)  删除容器（容器id可以通过docker ps查看，容器必须停止后才能删除）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#3-1-删除全部的容器-docker-rm-docker-ps-a-q"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 删除全部的容器 docker rm docker ps -a -q</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-docker-stop-id-容器id-停止容器运行"><span class="toc-number">1.4.</span> <span class="toc-text">4. docker stop  id(容器id) 停止容器运行</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-docker-rmi-id-镜像id-删除镜像"><span class="toc-number">1.5.</span> <span class="toc-text">5. docker rmi  id(镜像id) 删除镜像</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-docker-pull-ubuntu-16-04-镜像名称-版本号-下载镜像"><span class="toc-number">1.6.</span> <span class="toc-text">6. docker pull ubuntu:16.04(镜像名称:版本号) 下载镜像</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-docker-run-it-ubuntu-16-04-创建并运行容器容器"><span class="toc-number">1.7.</span> <span class="toc-text">7. docker run -it ubuntu:16.04 创建并运行容器容器</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#7-1-docker-run-dit-ubuntu-16-04-创建并后台运行容器"><span class="toc-number">1.7.1.</span> <span class="toc-text">7.1 docker run -dit ubuntu:16.04 创建并后台运行容器</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7-2-docker-run-ditp-8080-8080（主机端口-容器端口）-ubuntu-16-04-创建并后台运行容器且映射容器的端口"><span class="toc-number">1.7.2.</span> <span class="toc-text">7.2 docker run -ditp 8080:8080（主机端口:容器端口） ubuntu:16.04 创建并后台运行容器且映射容器的端口</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-docker-attach-id-容器id-进入正在运行中的容器环境"><span class="toc-number">1.8.</span> <span class="toc-text">8. docker attach id(容器id) 进入正在运行中的容器环境</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9-退出容器"><span class="toc-number">1.9.</span> <span class="toc-text">9. 退出容器</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#9-1-exit-直接退出容器并终止容器运行"><span class="toc-number">1.9.1.</span> <span class="toc-text">9.1 exit 直接退出容器并终止容器运行</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#9-2-ctrl-p-ctrl-q-（快捷键）-退出容器，但是不会终止容器运行"><span class="toc-number">1.9.2.</span> <span class="toc-text">9.2 [ctrl+p]+[ctrl+q]（快捷键） 退出容器，但是不会终止容器运行</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-docker-commit-m’版本标识’-id-容器id-ubuntu-16-04-镜像与版本号-提交镜像且生成镜像（可以通过该命令把搭建好的容器打包成一个新的镜像或者覆盖原镜像（即是修改原镜像内容，生成的镜像名与版本号相同就可以直接覆盖））"><span class="toc-number">1.10.</span> <span class="toc-text">10. docker commit -m’版本标识’ id(容器id) ubuntu:16.04(镜像与版本号)   提交镜像且生成镜像（可以通过该命令把搭建好的容器打包成一个新的镜像或者覆盖原镜像（即是修改原镜像内容，生成的镜像名与版本号相同就可以直接覆盖））</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker-安装-nginx"><span class="toc-number">1.</span> <span class="toc-text">Docker 安装 nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方式一：通过-pull-仓库镜像"><span class="toc-number">1.0.1.</span> <span class="toc-text">方式一：通过  pull 仓库镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、下载镜像"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">一、下载镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、使用镜像创建容器"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">二、使用镜像创建容器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方式二：通过-Dockerfile构建"><span class="toc-number">1.0.2.</span> <span class="toc-text">方式二：通过 Dockerfile构建</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#构建准备工作"><span class="toc-number">1.0.2.0.1.</span> <span class="toc-text">构建准备工作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在-Dockerfile-中输入如下内容："><span class="toc-number">1.0.2.0.2.</span> <span class="toc-text">在 Dockerfile 中输入如下内容：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#通过Dockerfile-构建一个镜像"><span class="toc-number">1.0.2.0.3.</span> <span class="toc-text">通过Dockerfile 构建一个镜像</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#构建-运行容器"><span class="toc-number">1.0.2.0.4.</span> <span class="toc-text">构建|运行容器</span></a></li></ol></li></ol></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Docker基本使用" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <article id="post-Docker安装nginx" class="article article-type-post" itemscope="" itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Docker基本使用
+      Docker安装nginx
     </h1>
   
 
@@ -349,31 +349,41 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2018/06/22/Docker基本使用/" class="article-date">
-	  <time datetime="2018-06-22T03:26:02.000Z" itemprop="datePublished">2018-06-22</time>
+	<a href="/2018/10/22/Docker安装nginx/" class="article-date">
+	  <time datetime="2018-10-22T04:34:08.000Z" itemprop="datePublished">2018-10-22</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/docker/">-docker</a>
+	<a class="article-tag-link" href="/tags/docker/">docker</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/06/22/Docker基本使用/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/22/Docker安装nginx/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h4 id="一-docker使用"><a href="#一-docker使用" class="headerlink" title="一. docker使用"></a>一. docker使用</h4><h5 id="1-docker-ps-查看运行中的容器"><a href="#1-docker-ps-查看运行中的容器" class="headerlink" title="1. docker ps 查看运行中的容器"></a>1. docker ps 查看运行中的容器</h5><h5 id="2-docker-images-查看docker镜像"><a href="#2-docker-images-查看docker镜像" class="headerlink" title="2. docker images 查看docker镜像"></a>2. docker images 查看docker镜像</h5><h5 id="3-docker-rm-id-容器id-删除容器（容器id可以通过docker-ps查看，容器必须停止后才能删除）"><a href="#3-docker-rm-id-容器id-删除容器（容器id可以通过docker-ps查看，容器必须停止后才能删除）" class="headerlink" title="3. docker rm id(容器id)  删除容器（容器id可以通过docker ps查看，容器必须停止后才能删除）"></a>3. docker rm id(容器id)  删除容器（容器id可以通过docker ps查看，容器必须停止后才能删除）</h5><h6 id="3-1-删除全部的容器-docker-rm-docker-ps-a-q"><a href="#3-1-删除全部的容器-docker-rm-docker-ps-a-q" class="headerlink" title="3.1 删除全部的容器 docker rm docker ps -a -q"></a>3.1 删除全部的容器 docker rm <code>docker ps -a -q</code></h6><h5 id="4-docker-stop-id-容器id-停止容器运行"><a href="#4-docker-stop-id-容器id-停止容器运行" class="headerlink" title="4. docker stop  id(容器id) 停止容器运行"></a>4. docker stop  id(容器id) 停止容器运行</h5><h5 id="5-docker-rmi-id-镜像id-删除镜像"><a href="#5-docker-rmi-id-镜像id-删除镜像" class="headerlink" title="5. docker rmi  id(镜像id) 删除镜像"></a>5. docker rmi  id(镜像id) 删除镜像</h5><h5 id="6-docker-pull-ubuntu-16-04-镜像名称-版本号-下载镜像"><a href="#6-docker-pull-ubuntu-16-04-镜像名称-版本号-下载镜像" class="headerlink" title="6. docker pull ubuntu:16.04(镜像名称:版本号) 下载镜像"></a>6. docker pull ubuntu:16.04(镜像名称:版本号) 下载镜像</h5><h5 id="7-docker-run-it-ubuntu-16-04-创建并运行容器容器"><a href="#7-docker-run-it-ubuntu-16-04-创建并运行容器容器" class="headerlink" title="7. docker run -it ubuntu:16.04 创建并运行容器容器"></a>7. docker run -it ubuntu:16.04 创建并运行容器容器</h5><p>　　　　-t 表示在新容器内指定一个伪终端或终端</p>
-<p>　　　　-i 表示允许我们对容器内的 (STDIN) 进行交互</p>
-<p>　　　　-p 指定映射端口</p>
-<p>　　　　-d 在后台运行容器并打印容器ID</p>
-<h6 id="7-1-docker-run-dit-ubuntu-16-04-创建并后台运行容器"><a href="#7-1-docker-run-dit-ubuntu-16-04-创建并后台运行容器" class="headerlink" title="7.1 docker run -dit ubuntu:16.04 创建并后台运行容器"></a>7.1 docker run -dit ubuntu:16.04 创建并后台运行容器</h6><h6 id="7-2-docker-run-ditp-8080-8080（主机端口-容器端口）-ubuntu-16-04-创建并后台运行容器且映射容器的端口"><a href="#7-2-docker-run-ditp-8080-8080（主机端口-容器端口）-ubuntu-16-04-创建并后台运行容器且映射容器的端口" class="headerlink" title="7.2 docker run -ditp 8080:8080（主机端口:容器端口） ubuntu:16.04 创建并后台运行容器且映射容器的端口"></a>7.2 docker run -ditp 8080:8080（主机端口:容器端口） ubuntu:16.04 创建并后台运行容器且映射容器的端口</h6><h5 id="8-docker-attach-id-容器id-进入正在运行中的容器环境"><a href="#8-docker-attach-id-容器id-进入正在运行中的容器环境" class="headerlink" title="8. docker attach id(容器id) 进入正在运行中的容器环境"></a>8. docker attach id(容器id) 进入正在运行中的容器环境</h5><h5 id="9-退出容器"><a href="#9-退出容器" class="headerlink" title="9. 退出容器"></a>9. 退出容器</h5><h6 id="9-1-exit-直接退出容器并终止容器运行"><a href="#9-1-exit-直接退出容器并终止容器运行" class="headerlink" title="9.1 exit 直接退出容器并终止容器运行"></a>9.1 exit 直接退出容器并终止容器运行</h6><h6 id="9-2-ctrl-p-ctrl-q-（快捷键）-退出容器，但是不会终止容器运行"><a href="#9-2-ctrl-p-ctrl-q-（快捷键）-退出容器，但是不会终止容器运行" class="headerlink" title="9.2 [ctrl+p]+[ctrl+q]（快捷键） 退出容器，但是不会终止容器运行"></a>9.2 [ctrl+p]+[ctrl+q]（快捷键） 退出容器，但是不会终止容器运行</h6><h5 id="10-docker-commit-m’版本标识’-id-容器id-ubuntu-16-04-镜像与版本号-提交镜像且生成镜像（可以通过该命令把搭建好的容器打包成一个新的镜像或者覆盖原镜像（即是修改原镜像内容，生成的镜像名与版本号相同就可以直接覆盖））"><a href="#10-docker-commit-m’版本标识’-id-容器id-ubuntu-16-04-镜像与版本号-提交镜像且生成镜像（可以通过该命令把搭建好的容器打包成一个新的镜像或者覆盖原镜像（即是修改原镜像内容，生成的镜像名与版本号相同就可以直接覆盖））" class="headerlink" title="10. docker commit -m’版本标识’ id(容器id) ubuntu:16.04(镜像与版本号)   提交镜像且生成镜像（可以通过该命令把搭建好的容器打包成一个新的镜像或者覆盖原镜像（即是修改原镜像内容，生成的镜像名与版本号相同就可以直接覆盖））"></a>10. docker commit -m’版本标识’ id(容器id) ubuntu:16.04(镜像与版本号)   提交镜像且生成镜像（可以通过该命令把搭建好的容器打包成一个新的镜像或者覆盖原镜像（即是修改原镜像内容，生成的镜像名与版本号相同就可以直接覆盖））</h5>
+        <h1 id="Docker-安装-nginx"><a href="#Docker-安装-nginx" class="headerlink" title="Docker 安装 nginx"></a>Docker 安装 nginx</h1><h3 id="方式一：通过-pull-仓库镜像"><a href="#方式一：通过-pull-仓库镜像" class="headerlink" title="方式一：通过  pull 仓库镜像"></a>方式一：通过  pull 仓库镜像</h3><h4 id="一、下载镜像"><a href="#一、下载镜像" class="headerlink" title="一、下载镜像"></a>一、下载镜像</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx</span><br></pre></td></tr></table></figure>
+<h4 id="二、使用镜像创建容器"><a href="#二、使用镜像创建容器" class="headerlink" title="二、使用镜像创建容器"></a>二、使用镜像创建容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir -p ~/nginx/www ~/nginx/logs ~/nginx/conf</span><br><span class="line"><span class="meta">#</span>www目录将映射为nginx容器配置的虚拟目录</span><br><span class="line"><span class="meta">#</span>logs目录将映射为nginx容器的日志目录</span><br><span class="line"><span class="meta">#</span>conf目录里的配置文件将映射为nginx容器的配置文件</span><br><span class="line"><span class="meta">#</span>找一份默认的 nginx.conf 配置文件放在 conf 目录下,否则下面启动会报错</span><br><span class="line">docker run -p 80:80 --name web -v $PWD/www:/www -v  $PWD/logs:/wwwlogs -d nginx</span><br><span class="line">docker cp web:/etc/nginx/nginx.conf </span><br><span class="line"><span class="meta">#</span>删除容器后再运行下面的命令</span><br><span class="line">docker run -p 80:80 --name web --link=app1:app1 --link=app2:app2 --link=app3:app3 -v $PWD/www:/www -v $PWD/conf/nginx.conf:/etc/nginx/nginx.conf -v $PWD/conf/servers:/etc/nginx/conf.d -v $PWD/logs:/wwwlogs -d nginx</span><br><span class="line"><span class="meta">#</span>此时打开浏览器访问宿主机的 IP 就可看到 nginx 的界面了，安装启动成功</span><br><span class="line"><span class="meta">#</span>-d:让容器在后台运行。</span><br><span class="line"><span class="meta">#</span>-P:将容器内部使用的网络端口映射到我们使用的主机上。</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>使用命令进入交互式终端</span><br><span class="line">docker exec -it mynginx /bin/bash</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>查看 IP</span><br><span class="line">ifconfig</span><br><span class="line"><span class="meta">#</span>发现找不到指令，需要安装 net-tools 工具依次执行，再执行 ifconfig</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install net-tools</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>在宿主机中查询容器的 IP，返回 json 串，里面包含了详细的容器信息，包括 IP ~</span><br><span class="line"><span class="meta">#</span>docker inspect [容器名|id]</span><br><span class="line">docker inspect mynginx</span><br></pre></td></tr></table></figure>
+<p>命令说明：</p>
+<ul>
+<li>-p 80:80：将容器的80端口映射到主机的80端口</li>
+<li>–name  web：将容器命名为web</li>
+<li>-v $PWD/www:/www：将主机中当前目录下的www挂载到容器的/www</li>
+<li>-v $PWD/conf/nginx.conf:/etc/nginx/nginx.conf：将主机中当前目录下的nginx.conf挂载到容器的/etc/nginx/nginx.conf</li>
+<li>-v $PWD/logs:/wwwlogs：将主机中当前目录下的logs挂载到容器的/wwwlogs</li>
+</ul>
+<h3 id="方式二：通过-Dockerfile构建"><a href="#方式二：通过-Dockerfile构建" class="headerlink" title="方式二：通过 Dockerfile构建"></a>方式二：通过 Dockerfile构建</h3><h5 id="构建准备工作"><a href="#构建准备工作" class="headerlink" title="构建准备工作"></a>构建准备工作</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/nginx/www ~/nginx/logs ~/nginx/conf</span><br><span class="line">cd ~/nginx</span><br><span class="line">vi Dockerfile</span><br></pre></td></tr></table></figure>
+<h5 id="在-Dockerfile-中输入如下内容："><a href="#在-Dockerfile-中输入如下内容：" class="headerlink" title="在 Dockerfile 中输入如下内容："></a>在 Dockerfile 中输入如下内容：</h5><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#指定使用那个基础镜像</span><br><span class="line">FROM centos</span><br><span class="line">MAINTAINER ginkgo</span><br><span class="line">LABEL Discription="基于centos的nginx镜像" version="1.0"</span><br><span class="line">WORKDIR /usr/local/src</span><br><span class="line">RUN yum install -y wget</span><br><span class="line">RUN wget http://nginx.org/download/nginx-1.8.0.tar.gz</span><br><span class="line">RUN tar -zxvf nginx-1.8.0.tar.gz</span><br><span class="line">WORKDIR nginx-1.8.0</span><br><span class="line">#安装nginx所依赖的包</span><br><span class="line">RUN yum -y install gcc-c++</span><br><span class="line">RUN yum -y install pcre pcre-devel</span><br><span class="line">RUN yum -y install zlib zlib-devel</span><br><span class="line">RUN yum -y install openssl openssl-devel libssl-dev</span><br><span class="line">RUN ./configure</span><br><span class="line">RUN make</span><br><span class="line">RUN make install</span><br><span class="line">EXPOSE 80</span><br></pre></td></tr></table></figure>
+<h5 id="通过Dockerfile-构建一个镜像"><a href="#通过Dockerfile-构建一个镜像" class="headerlink" title="通过Dockerfile 构建一个镜像"></a>通过Dockerfile 构建一个镜像</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> -t 镜像名 , "." 是Dockerfile 所在的目录，可以使用绝对路径</span><br><span class="line">docker build -t ginkgo/nginx .</span><br><span class="line"><span class="meta">#</span>查看镜像</span><br><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<h5 id="构建-运行容器"><a href="#构建-运行容器" class="headerlink" title="构建|运行容器"></a>构建|运行容器</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>找一份默认的 nginx.conf 配置文件放在 ~/nginx/conf 目录下,否则下面启动会报错</span><br><span class="line">docker run -p 80:80 --name mynginx -v $PWD/www:/www -v $PWD/conf/nginx.conf:/etc/nginx/nginx.conf -v $PWD/logs:/wwwlogs -d nginx</span><br><span class="line"><span class="meta">#</span>此时打开浏览器访问宿主机的 IP 就可看到 nginx 的界面了，安装启动成功</span><br><span class="line"><span class="meta">#</span>-d:让容器在后台运行。</span><br><span class="line"><span class="meta">#</span>-P:将容器内部使用的网络端口映射到我们使用的主机上。</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>使用命令进入交互式终端</span><br><span class="line">docker exec -it mynginx /bin/bash</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>查看 IP</span><br><span class="line">ifconfig</span><br><span class="line"><span class="meta">#</span>发现找不到指令，需要安装 net-tools 工具依次执行，再执行 ifconfig</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install net-tools</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>在宿主机中查询容器的 IP，返回 json 串，里面包含了详细的容器信息，包括 IP ~</span><br><span class="line">docker inspect [容器名|id]</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <div class="article-footer">
@@ -382,7 +392,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://blog.milk4j.com/2018/06/22/Docker基本使用/" title="Docker基本使用" target="_blank" rel="external">https://blog.milk4j.com/2018/06/22/Docker基本使用/</a>
+      <a href="https://blog.milk4j.com/2018/10/22/Docker安装nginx/" title="Docker安装nginx" target="_blank" rel="external">https://blog.milk4j.com/2018/10/22/Docker安装nginx/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -428,13 +438,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2018/10/22/Docker安装nginx/" title="Docker安装nginx"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2018/04/14/Mac后端开发环境搭建/" title="Mac后端开发环境搭建"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2018/06/22/Docker基本使用/" title="Docker基本使用"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
