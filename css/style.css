@@ -296,7 +296,33 @@ figure {
 img {
   vertical-align: middle;
 }
-
+.skill-li {
+    position: relative;
+    border: solid 1px #cddc39;
+    margin-bottom: 5px;
+    border-radius: 14px;
+    padding: 0 8px;
+    overflow: hidden;
+    height: 20px;
+    line-height: 20px;
+    font-size: 0.8em;
+}
+.skill-process{
+    position: absolute;
+    height: 100%;
+    left: 0;
+    background: #8959a8;
+    border-top-right-radius: 13px;
+    border-bottom-right-radius: 13px;
+    z-index: -1;
+}
+.sidebar-link li{
+    word-break: keep-all;
+    white-space: nowrap;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 .img-responsive {
   display: block;
   max-width: 100%;
@@ -6096,6 +6122,18 @@ body.no-sidebar .sidebar {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25em;
+}
+
+.archive-list li:before {
+    content: '📅';
+}
+
+.tag-list li:before {
+    content: '🏷';
+}
+
+.category-list li:before {
+    content: '📂';
 }
 
 .bar .pager .next > a,
