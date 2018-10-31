@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Jerry Simple">
 <meta property="og:description" content="Maven依赖12345678910&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt;    &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;&amp;lt;/">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-31T08:17:14.986Z">
+<meta property="og:updated_time" content="2018-10-31T08:46:11.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot+H2+Mybatis单元测试整合和坑">
 <meta name="twitter:description" content="Maven依赖12345678910&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt;    &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;&amp;lt;/">
@@ -391,7 +391,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/31/SpringBoot+H2+Mybatis单元测试整合和坑/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 633(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 656(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
@@ -421,6 +421,8 @@
 <p>MySQL支持双引号包含字符串，可以把内容中包含的单引号改为双引号，但其他情况可能会涉及到业务调整。另外，不能将包含字符串的单引号改为双引号，H2会把双引号中的内容当做列名处理。</p>
 <p><strong>四、H2 的 UNIQUE KEY是数据库级别的</strong></p>
 <p>H2 的 UNIQUE KEY不是表级别的，MySQL是表级别的，转为H2后容易出现UNIQUE KEY重复。删掉UNIQUE KEY或者修改KEY的名称即可。</p>
+<p><strong>五、无法使用子查询</strong></p>
+<p>目前没有办法解决,尽量避免使用吧</p>
 
       
     </div>
