@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.milk4j.com/2018/06/20/ElasticSearch-Rest-%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2018-10-31T01:38:12.054Z</lastmod>
+  </url>  <url>
     <loc>https://blog.milk4j.com/2018/09/05/%E7%94%A8Kotlin%E5%9C%A8IntelliJ-Idea%E4%B8%AD%E6%97%A0%E6%B3%95%E7%94%9F%E6%88%90-spring-configuration-metadata-json-%E6%96%87%E4%BB%B6/</loc>
-    <lastmod>2018-10-31T01:28:30.428Z</lastmod>
+    <lastmod>2018-10-31T01:32:08.944Z</lastmod>
   </url>  <url>
     <loc>https://blog.milk4j.com/2018/10/22/Docker%E5%AE%89%E8%A3%85nginx/</loc>
     <lastmod>2018-10-24T09:53:47.517Z</lastmod>
