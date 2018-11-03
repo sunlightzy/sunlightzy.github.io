@@ -17,17 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>404 Not Found：该页无法显示 | JerrySimple</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="404 Not Found：该页无法显示">
-<meta property="og:url" content="https://blog.milk4j.com/404.html">
+  <title>MySQL的一些遗忘点 | JerrySimple</title>
+  <meta name="description" content="一、Group By 和 Order By 一起使用order by 的列，必须是出现在group by 子句里的列  123456789SELECT	MAX( `id` )FROM	`order`GROUP BY	`order_code` , `created_at`-- order by 的列，必须是出现在 group by 子句里的列 ORDER BY	`created_at` DESC;">
+<meta name="keywords" content="Junit,单元测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL的一些遗忘点">
+<meta property="og:url" content="https://blog.milk4j.com/2018/10/31/MySQL的一些遗忘点/index.html">
 <meta property="og:site_name" content="Jerry Simple">
+<meta property="og:description" content="一、Group By 和 Order By 一起使用order by 的列，必须是出现在group by 子句里的列  123456789SELECT	MAX( `id` )FROM	`order`GROUP BY	`order_code` , `created_at`-- order by 的列，必须是出现在 group by 子句里的列 ORDER BY	`created_at` DESC;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-21T15:06:58.892Z">
+<meta property="og:updated_time" content="2018-11-03T13:54:26.783Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="404 Not Found：该页无法显示">
+<meta name="twitter:title" content="MySQL的一些遗忘点">
+<meta name="twitter:description" content="一、Group By 和 Order By 一起使用order by 的列，必须是出现在group by 子句里的列  123456789SELECT	MAX( `id` )FROM	`order`GROUP BY	`order_code` , `created_at`-- order by 的列，必须是出现在 group by 子句里的列 ORDER BY	`created_at` DESC;">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://blog.milk4j.com/404.html">
+  <link rel="canonical" href="https://blog.milk4j.com/2018/10/31/MySQL的一些遗忘点/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Jerry Simple" type="application/atom+xml">
   
@@ -339,16 +343,25 @@
 
   
   
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope="" itemtype="https://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Group-By-和-Order-By-一起使用"><span class="toc-number">1.</span> <span class="toc-text">一、Group By 和 Order By 一起使用</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
 <main class="main" role="main">
   <div class="content">
-  <article id="page-" class="article article-type-page" itemscope="" itemtype="https://schema.org/BlogPosting">
+  <article id="post-MySQL的一些遗忘点" class="article article-type-post" itemscope="" itemtype="https://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      404 Not Found：该页无法显示
+      MySQL的一些遗忘点
     </h1>
   
 
@@ -356,19 +369,29 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/404.html" class="article-date">
-	  <time datetime="2018-10-21T15:06:58.893Z" itemprop="datePublished">2018-10-21</time>
+	<a href="/2018/10/31/MySQL的一些遗忘点/" class="article-date">
+	  <time datetime="2018-10-31T05:59:00.000Z" itemprop="datePublished">2018-10-31</time>
 	</a>
 </span>
         
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/spring-boot/">spring boot</a>
+  </span>
+
         
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Junit/">Junit</a>, <a class="article-tag-link" href="/tags/单元测试/">单元测试</a>
+  </span>
+
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/404.html#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/31/MySQL的一些遗忘点/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 0(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 57(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
@@ -378,7 +401,8 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <script type="text/javascript" src="//www.qq.com/404/search_children.js" charset="utf-8" homepageurl="<%- config.url %>" homepagename="回到我的主页"></script>
+        <h2 id="一、Group-By-和-Order-By-一起使用"><a href="#一、Group-By-和-Order-By-一起使用" class="headerlink" title="一、Group By 和 Order By 一起使用"></a>一、Group By 和 Order By 一起使用</h2><p>order by 的列，必须是出现在group by 子句里的列 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">MAX</span>( <span class="string">`id`</span> )</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	<span class="string">`order`</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">	<span class="string">`order_code`</span> , <span class="string">`created_at`</span></span><br><span class="line"><span class="comment">-- order by 的列，必须是出现在 group by 子句里的列 </span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">	<span class="string">`created_at`</span> <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -388,7 +412,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://blog.milk4j.com//404.html" title="404 Not Found：该页无法显示" target="_blank" rel="external">https://blog.milk4j.com//404.html</a>
+      <a href="https://blog.milk4j.com/2018/10/31/MySQL的一些遗忘点/" title="MySQL的一些遗忘点" target="_blank" rel="external">https://blog.milk4j.com/2018/10/31/MySQL的一些遗忘点/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -419,12 +443,37 @@
   </article>
   
     
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
 
   
 </div>
 
   <nav class="bar bar-footer clearfix" data-stick-bottom="">
   <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2018/10/31/SpringBoot Junit单元测试/" title="SpringBoot Junit单元测试"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
   
   
   <!-- Button trigger modal -->
@@ -534,6 +583,37 @@ window.jQuery || document.write('<script src="https://cdn.bootcss.com/jquery/1.1
 
 
 
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
 
 
 

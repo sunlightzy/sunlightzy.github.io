@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.milk4j.com/"/>
-  <updated>2018-10-31T08:46:11.871Z</updated>
+  <updated>2018-11-03T13:54:26.783Z</updated>
   <id>https://blog.milk4j.com/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL的一些遗忘点</title>
+    <link href="https://blog.milk4j.com/2018/10/31/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%81%97%E5%BF%98%E7%82%B9/"/>
+    <id>https://blog.milk4j.com/2018/10/31/MySQL的一些遗忘点/</id>
+    <published>2018-10-31T05:59:00.000Z</published>
+    <updated>2018-11-03T13:54:26.783Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、Group-By-和-Order-By-一起使用"><a href="#一、Group-By-和-Order-By-一起使用" class="headerlink" title="一、Group By 和 Order By 一起使用"></a>一、Group By 和 Order By 一起使用</h2><p>order by 的列，必须是出现在group by 子句里的列 </p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line"><span class="keyword">MAX</span>( <span class="string">`id`</span> )</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line"><span class="string">`order`</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line"><span class="string">`order_code`</span> , <span class="string">`created_at`</span></span><br><span class="line"><span class="comment">-- order by 的列，必须是出现在 group by 子句里的列 </span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line"><span class="string">`created_at`</span> <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;一、Group-By-和-Order-By-一起使用&quot;&gt;&lt;a href=&quot;#一、Group-By-和-Order-By-一起使用&quot; class=&quot;headerlink&quot; title=&quot;一、Group By 和 Order By 一起使用&quot;&gt;&lt;/a&gt;一、Group 
+      
+    
+    </summary>
+    
+      <category term="spring boot" scheme="https://blog.milk4j.com/categories/spring-boot/"/>
+    
+    
+      <category term="Junit" scheme="https://blog.milk4j.com/tags/Junit/"/>
+    
+      <category term="单元测试" scheme="https://blog.milk4j.com/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot Junit单元测试</title>
+    <link href="https://blog.milk4j.com/2018/10/31/SpringBoot%20Junit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+    <id>https://blog.milk4j.com/2018/10/31/SpringBoot Junit单元测试/</id>
+    <published>2018-10-31T05:59:00.000Z</published>
+    <updated>2018-11-03T08:51:50.530Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、JUnit中的注解"><a href="#一、JUnit中的注解" class="headerlink" title="一、JUnit中的注解"></a>一、JUnit中的注解</h2><ul><li>@BeforeClass：针对所有测试，只执行一次，且必须为static void</li><li>@Before：初始化方法，执行当前测试类的每个测试方法前执行。</li><li>@Test：测试方法，在这里可以测试期望异常和超时时间</li><li>@After：释放资源，执行当前测试类的每个测试方法后执行</li><li>@AfterClass：针对所有测试，只执行一次，且必须为static void</li><li>@Ignore：忽略的测试方法（只在测试类的时候生效，单独执行该测试方法无效）</li><li>@RunWith:可以更改测试运行器 ，缺省值 org.junit.runner.Runner</li></ul><p><strong>一个单元测试类执行顺序为：</strong></p><blockquote><p>@BeforeClass –&gt; @Before –&gt; @Test –&gt; @After –&gt; @AfterClass </p></blockquote><p><strong>每一个测试方法的调用顺序为：</strong></p><blockquote><p>@Before –&gt; @Test –&gt; @After</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;一、JUnit中的注解&quot;&gt;&lt;a href=&quot;#一、JUnit中的注解&quot; class=&quot;headerlink&quot; title=&quot;一、JUnit中的注解&quot;&gt;&lt;/a&gt;一、JUnit中的注解&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;@BeforeClass：针对所有测试，只执行一次，且必
+      
+    
+    </summary>
+    
+      <category term="spring boot" scheme="https://blog.milk4j.com/categories/spring-boot/"/>
+    
+    
+      <category term="Junit" scheme="https://blog.milk4j.com/tags/Junit/"/>
+    
+      <category term="单元测试" scheme="https://blog.milk4j.com/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringBoot+H2+Mybatis单元测试整合和坑</title>
@@ -37,11 +92,11 @@
       <category term="spring boot" scheme="https://blog.milk4j.com/categories/spring-boot/"/>
     
     
+      <category term="单元测试" scheme="https://blog.milk4j.com/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+    
       <category term="spring boot" scheme="https://blog.milk4j.com/tags/spring-boot/"/>
     
       <category term="h2" scheme="https://blog.milk4j.com/tags/h2/"/>
-    
-      <category term="单元测试" scheme="https://blog.milk4j.com/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
