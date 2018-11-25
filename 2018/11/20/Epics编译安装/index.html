@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>JerrySimple</title>
+  <meta name="description" content="Epics编译安装我的系统环境 macOS Mojave parallels desktop虚拟机系统: centos 7 linux-x86_64 Epics版本: 3.15.5 下载链接  记一笔:parallels desktop下载的centos7 默认用户名是parallels 密码是需要设置的。软件没有自动设置。密码必须大于8位； 并且无法进行su命令，提示 Authenticatio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jerry Simple">
+<meta property="og:url" content="https://blog.milk4j.com/2018/11/20/Epics编译安装/index.html">
+<meta property="og:site_name" content="Jerry Simple">
+<meta property="og:description" content="Epics编译安装我的系统环境 macOS Mojave parallels desktop虚拟机系统: centos 7 linux-x86_64 Epics版本: 3.15.5 下载链接  记一笔:parallels desktop下载的centos7 默认用户名是parallels 密码是需要设置的。软件没有自动设置。密码必须大于8位； 并且无法进行su命令，提示 Authenticatio">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-21T05:21:01.666Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jerry Simple">
+<meta name="twitter:description" content="Epics编译安装我的系统环境 macOS Mojave parallels desktop虚拟机系统: centos 7 linux-x86_64 Epics版本: 3.15.5 下载链接  记一笔:parallels desktop下载的centos7 默认用户名是parallels 密码是需要设置的。软件没有自动设置。密码必须大于8位； 并且无法进行su命令，提示 Authenticatio">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://blog.milk4j.com/2018/11/20/Epics编译安装/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Jerry Simple" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center" itemscope itemtype="https://schema.org/WebPage">
+  <header class="header" itemscope="" itemtype="https://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/sunlightzy" target="_blank">
+          <img class="img-circle img-rotate" src="https://oscimg.oschina.net/oscnet/ec5be0d5bdd7e3094a04a246b07bc741ff7.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Jerry Simple</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">雨天配抄书,代码配咖啡</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> HangZhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech="">
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope="" itemtype="https://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/sunlightzy" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope="" itemtype="https://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/elasticsearch/">elasticsearch</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/kotlin/">kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-boot/">spring boot</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Junit/">Junit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2/">h2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/">kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-boot/">spring boot</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单元测试/">单元测试</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Junit/" style="font-size: 13px;">Junit</a> <a href="/tags/docker/" style="font-size: 13.5px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 13.5px;">elasticsearch</a> <a href="/tags/h2/" style="font-size: 13px;">h2</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/kotlin/" style="font-size: 13px;">kotlin</a> <a href="/tags/mac/" style="font-size: 13px;">mac</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/tags/spring-boot/" style="font-size: 14px;">spring boot</a> <a href="/tags/单元测试/" style="font-size: 13.5px;">单元测试</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category">-->
+                <!---->
+              <!--</p>-->
+              <p class="item-title">
+                <a href="/2018/11/20/Docker构建Epics/" class="title">(no title)</a>
+              </p>
+              <p class="item-date">
+                <i class="icon icon-calendar-plus"></i>
+                <time datetime="2018-11-20T07:43:25.517Z" itemprop="datePublished">2018-11-20</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category">-->
+                <!---->
+              <!--</p>-->
+              <p class="item-title">
+                <a href="/2018/11/20/Epics编译安装/" class="title">(no title)</a>
+              </p>
+              <p class="item-date">
+                <i class="icon icon-calendar-plus"></i>
+                <time datetime="2018-11-20T01:14:18.886Z" itemprop="datePublished">2018-11-20</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category">-->
+                <!--<a class="category-link" href="/categories/spring-boot/">spring boot</a>-->
+              <!--</p>-->
+              <p class="item-title">
+                <a href="/2018/11/11/Spring Boot 自动配置(autoconfigure)原理/" class="title">Spring Boot 自动配置(autoconfigure)原理</a>
+              </p>
+              <p class="item-date">
+                <i class="icon icon-calendar-plus"></i>
+                <time datetime="2018-11-11T15:59:59.000Z" itemprop="datePublished">2018-11-11</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category">-->
+                <!--<a class="category-link" href="/categories/mysql/">mysql</a>-->
+              <!--</p>-->
+              <p class="item-title">
+                <a href="/2018/10/31/MySQL的一些遗忘点/" class="title">MySQL的一些遗忘点</a>
+              </p>
+              <p class="item-date">
+                <i class="icon icon-calendar-plus"></i>
+                <time datetime="2018-10-31T05:59:00.000Z" itemprop="datePublished">2018-10-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category">-->
+                <!--<a class="category-link" href="/categories/spring-boot/">spring boot</a>-->
+              <!--</p>-->
+              <p class="item-title">
+                <a href="/2018/10/31/SpringBoot+H2+Mybatis单元测试整合和坑/" class="title">SpringBoot+H2+Mybatis单元测试整合和坑</a>
+              </p>
+              <p class="item-date">
+                <i class="icon icon-calendar-plus"></i>
+                <time datetime="2018-10-31T05:59:00.000Z" itemprop="datePublished">2018-10-31</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Epics编译安装" class="article article-type-post" itemscope="" itemtype="https://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/11/20/Epics编译安装/" class="article-date">
+	  <time datetime="2018-11-20T01:14:18.886Z" itemprop="datePublished">2018-11-20</time>
+	</a>
+</span>
+        
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/11/20/Epics编译安装/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 740(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="Epics编译安装"><a href="#Epics编译安装" class="headerlink" title="Epics编译安装"></a>Epics编译安装</h1><h2 id="我的系统环境"><a href="#我的系统环境" class="headerlink" title="我的系统环境"></a>我的系统环境</h2><blockquote>
+<p>macOS Mojave parallels desktop虚拟机系统: centos 7 linux-x86_64</p>
+<p>Epics版本: <a href="https://epics.anl.gov/download/base/index.php" target="_blank" rel="noopener">3.15.5</a> 下载<a href="https://epics.anl.gov/download/base/base-3.15.5.tar.gz" target="_blank" rel="noopener">链接</a></p>
+</blockquote>
+<h3 id="记一笔"><a href="#记一笔" class="headerlink" title="记一笔:"></a>记一笔:</h3><p>parallels desktop下载的centos7 默认用户名是parallels 密码是需要设置的。软件没有自动设置。密码必须大于8位；</p>
+<p>并且无法进行su命令，提示 Authentication failure。</p>
+<p>这个问题产生的原因是由于系统默认是没有激活root用户的，需要我们手工进行操作，在命令行界面下，或者在终端中输入如下命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd</span><br><span class="line">Password：你当前的密码</span><br><span class="line">Enter new UNIX password：这个是root的密码</span><br><span class="line">Retype new UNIX password：重复root的密码</span><br></pre></td></tr></table></figure>
+<p>然后会提示成功的信息。 在说明一点，使用su和sudo是有区别的，使用su切换用户需要输入所切换到的用户的密码，而使用sudo则是当前用户的密码。</p>
+<h2 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">mkdir epics </span><br><span class="line"><span class="built_in">cd</span> epics</span><br><span class="line">mkdir extensions <span class="comment"># 存放扩展程序</span></span><br><span class="line"><span class="built_in">cd</span> .. </span><br><span class="line">wget https://epics.anl.gov/download/base/base-3.15.5.tar.gz</span><br><span class="line">tar -vxzf base-3.15.5.tar.gz</span><br><span class="line">ln -s base-3.15.5.tar.gz base <span class="comment">#创建软连接</span></span><br><span class="line"><span class="built_in">cd</span> base</span><br><span class="line">./startup/EpicsHostArch <span class="comment"># 获取系统架构, 我的是linux-x86_64</span></span><br><span class="line"><span class="built_in">pwd</span> <span class="comment"># 输出 /home/parallels/epics/base</span></span><br><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">vi .bashrc</span><br><span class="line"><span class="comment"># 添加</span></span><br><span class="line"><span class="comment"># export EPICS_HOST_ARCH=linux-x86_64</span></span><br><span class="line"><span class="comment"># export HOST_ARCH=linux-x86_64</span></span><br><span class="line"><span class="comment"># 上面的linux-x86_64根据系统情况设置，具体参考base/configure/CONFIG_SITE</span></span><br><span class="line"><span class="comment"># export EPICS_EXTENSIONS=/home/parallels/epics/extensions</span></span><br><span class="line"><span class="comment"># export EPICS_BASE=/home/parallels/epics/base</span></span><br><span class="line"><span class="built_in">source</span> .bashrc <span class="comment"># 使环境变量生效</span></span><br><span class="line"><span class="built_in">cd</span> ~/epics/base/startup</span><br><span class="line">./EpicsHostArch <span class="comment"># 获取系统架构, 我的是linux-x86_64</span></span><br><span class="line"><span class="built_in">cd</span> ~/epics/base/configure</span><br><span class="line">vim CONFIG_SITE</span><br><span class="line"><span class="comment"># 填写下面几项值 , 下面的值来自于获取系统架构的输出</span></span><br><span class="line">CROSS_COMPILER_TARGET_ARCHS=linux-x86_64</span><br><span class="line">CROSS_COMPILER_HOST_ARCHS=linux-x86_64</span><br><span class="line">CROSS_COMPILER_RUNTEST_ARCHS=linux-x86_64</span><br></pre></td></tr></table></figure>
+<p><strong>为了确保安装过程顺利</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编译中可能出现缺少 readline.h</span></span><br><span class="line">sudo yum install readline-static.x86_64</span><br><span class="line"><span class="comment"># 确保环境安装了 g++ c++ gcc perl</span></span><br><span class="line"><span class="built_in">which</span> perl <span class="comment"># 输出 /usr/bin/perl表示安装了perl,其他三个类似</span></span><br><span class="line"><span class="comment"># 由于我的环境没有g++ 和 c++ ,安装一下</span></span><br><span class="line">sudo yum install gcc gcc-c++</span><br></pre></td></tr></table></figure>
+<p>Make安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/epics/base <span class="comment"># 回到epics base的根目录</span></span><br><span class="line">make </span><br><span class="line"><span class="comment"># 下面就是漫长的等待...</span></span><br><span class="line"><span class="comment"># 如果没有什么问题就成功了,如果编译报缺失什么文件,安装后再依次执行 </span></span><br><span class="line"><span class="comment"># make distclean </span></span><br><span class="line"><span class="comment"># make</span></span><br><span class="line"><span class="comment"># 我的make过程很顺利,花了大概1分钟,但是我在云主机上花了30多分钟</span></span><br><span class="line">ls </span><br><span class="line"><span class="comment"># bin  configure  db  dbd  documentation  html  include  lib  LICENSE  Makefile  README  src  startup  templates</span></span><br><span class="line">vi ~/.bashrc</span><br><span class="line"><span class="comment"># 添加</span></span><br><span class="line">PATH=<span class="variable">$PATH</span>:/home/parallels/epics/base/bin/linux-x86_64</span><br><span class="line"><span class="built_in">export</span> PATH</span><br><span class="line"><span class="comment"># 生效环境变量</span></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>创建example软件和IOC环境</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/epics</span><br><span class="line">mkdir -p iocs/example</span><br><span class="line"><span class="built_in">cd</span> iocs</span><br><span class="line"><span class="built_in">cd</span> example</span><br><span class="line">makeBaseApp.pl -t example example</span><br><span class="line">makeBaseApp.pl -i -t example example</span><br><span class="line">ls</span><br><span class="line"><span class="comment"># configure  exampleApp  iocBoot  Makefile</span></span><br><span class="line">make <span class="comment"># 等待完成</span></span><br><span class="line">ls</span><br><span class="line"><span class="comment"># bin  configure  db  dbd  exampleApp  include  iocBoot  lib  Makefile</span></span><br><span class="line"><span class="built_in">cd</span> iocBoot/iocexample/</span><br><span class="line">ls</span><br><span class="line"><span class="comment"># envPaths  Makefile  README  st.cmd</span></span><br><span class="line">sudo chmod +x ./st.cmd</span><br><span class="line">./st.cmd</span><br><span class="line">epics&gt; dbl</span><br><span class="line">parallels:xxxExample</span><br><span class="line">parallels:compressExample</span><br><span class="line">parallels:calcExample</span><br><span class="line">parallels:calcExample1</span><br><span class="line">parallels:calc1</span><br><span class="line">parallels:calcExample2</span><br><span class="line">parallels:calc2</span><br><span class="line">parallels:calcExample3</span><br><span class="line">parallels:calc3</span><br><span class="line">parallels:aSubExample</span><br><span class="line">parallels:subExample</span><br><span class="line">parallels:aiExample</span><br><span class="line">parallels:aiExample1</span><br><span class="line">parallels:ai1</span><br><span class="line">parallels:aiExample2</span><br><span class="line">parallels:ai2</span><br><span class="line">parallels:aiExample3</span><br><span class="line">parallels:ai3</span><br><span class="line">epics&gt; dbpr parallels:ai1</span><br><span class="line">ASG:                DESC: Analog input No. 1                DISA: 0</span><br><span class="line">DISP: 0             DISV: 1             NAME: parallels:aiExample1</span><br><span class="line">RVAL: 0             SEVR: MAJOR         STAT: LOLO          SVAL: 0</span><br><span class="line">TPRO: 0             VAL: 0</span><br></pre></td></tr></table></figure>
+<p>开启一个新终端,继续输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">camonitor parallels:aiExample</span><br></pre></td></tr></table></figure>
+<p>mac os 安装问题</p>
+<ol>
+<li>EXTERN.h 文件缺失:是因为perl的原因, 解决方案 brew install perl-build</li>
+</ol>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://blog.milk4j.com/2018/11/20/Epics编译安装/" title="" target="_blank" rel="external">https://blog.milk4j.com/2018/11/20/Epics编译安装/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/sunlightzy" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://oscimg.oschina.net/oscnet/ec5be0d5bdd7e3094a04a246b07bc741ff7.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/sunlightzy" target="_blank"><span class="text-dark">Jerry Simple</span><small class="ml-1x">雨天配抄书,代码配咖啡</small></a></h3>
+        <div>被编程耽误的歌手,业余艺术家</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom="">
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2018/11/20/Docker构建Epics/" title="(no title)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/11/11/Spring Boot 自动配置(autoconfigure)原理/" title="Spring Boot 自动配置(autoconfigure)原理"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="https://oscimg.oschina.net/oscnet/581bf3b48ecae7688c440fcd5155296e900.jpg" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="https://oscimg.oschina.net/oscnet/0c82a0e906ef1016bd0d495e5da9162c5f9.jpg" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope="" itemtype="https://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/sunlightzy" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <!-- <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div> -->
+</footer>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

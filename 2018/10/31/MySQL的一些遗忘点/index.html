@@ -18,18 +18,18 @@
   
   
   <title>MySQL的一些遗忘点 | JerrySimple</title>
-  <meta name="description" content="一、Group By 和 Order By 一起使用order by 的列，必须是出现在group by 子句里的列  1234SELECT MAX( `id` ) FROM `order`GROUP BY `order_code` , `created_at`-- order by 的列，必须是出现在 group by 子句里的列 ORDER BY `created_at` DESC;">
+  <meta name="description" content="一、Group By 和 Order By 一起使用order by 的列，必须是出现在group by 子句里的列  1234SELECT MAX( `id` ) FROM `order`GROUP BY `order_code` , `created_at`-- order by 的列，必须是出现在 group by 子句里的列 ORDER BY `created_at` DESC; 二、忘记">
 <meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL的一些遗忘点">
 <meta property="og:url" content="https://blog.milk4j.com/2018/10/31/MySQL的一些遗忘点/index.html">
 <meta property="og:site_name" content="Jerry Simple">
-<meta property="og:description" content="一、Group By 和 Order By 一起使用order by 的列，必须是出现在group by 子句里的列  1234SELECT MAX( `id` ) FROM `order`GROUP BY `order_code` , `created_at`-- order by 的列，必须是出现在 group by 子句里的列 ORDER BY `created_at` DESC;">
+<meta property="og:description" content="一、Group By 和 Order By 一起使用order by 的列，必须是出现在group by 子句里的列  1234SELECT MAX( `id` ) FROM `order`GROUP BY `order_code` , `created_at`-- order by 的列，必须是出现在 group by 子句里的列 ORDER BY `created_at` DESC; 二、忘记">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-03T17:13:17.195Z">
+<meta property="og:updated_time" content="2018-11-19T10:33:48.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL的一些遗忘点">
-<meta name="twitter:description" content="一、Group By 和 Order By 一起使用order by 的列，必须是出现在group by 子句里的列  1234SELECT MAX( `id` ) FROM `order`GROUP BY `order_code` , `created_at`-- order by 的列，必须是出现在 group by 子句里的列 ORDER BY `created_at` DESC;">
+<meta name="twitter:description" content="一、Group By 和 Order By 一起使用order by 的列，必须是出现在group by 子句里的列  1234SELECT MAX( `id` ) FROM `order`GROUP BY `order_code` , `created_at`-- order by 的列，必须是出现在 group by 子句里的列 ORDER BY `created_at` DESC; 二、忘记">
   <!-- Canonical links -->
   <link rel="canonical" href="https://blog.milk4j.com/2018/10/31/MySQL的一些遗忘点/index.html">
   
@@ -211,7 +211,7 @@
   <div class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/elasticsearch/">elasticsearch</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/kotlin/">kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-boot/">spring boot</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/elasticsearch/">elasticsearch</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/kotlin/">kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-boot/">spring boot</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -221,7 +221,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Junit/">Junit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2/">h2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/">kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-boot/">spring boot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单元测试/">单元测试</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Junit/">Junit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2/">h2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/">kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-boot/">spring boot</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单元测试/">单元测试</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -231,7 +231,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/Junit/" style="font-size: 13px;">Junit</a> <a href="/tags/docker/" style="font-size: 14px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 14px;">elasticsearch</a> <a href="/tags/h2/" style="font-size: 13px;">h2</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/kotlin/" style="font-size: 13px;">kotlin</a> <a href="/tags/mac/" style="font-size: 13px;">mac</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/tags/spring-boot/" style="font-size: 14px;">spring boot</a> <a href="/tags/单元测试/" style="font-size: 14px;">单元测试</a>
+      <a href="/tags/Junit/" style="font-size: 13px;">Junit</a> <a href="/tags/docker/" style="font-size: 13.5px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 13.5px;">elasticsearch</a> <a href="/tags/h2/" style="font-size: 13px;">h2</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/kotlin/" style="font-size: 13px;">kotlin</a> <a href="/tags/mac/" style="font-size: 13px;">mac</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/tags/spring-boot/" style="font-size: 14px;">spring boot</a> <a href="/tags/单元测试/" style="font-size: 13.5px;">单元测试</a>
     </div>
   </div>
 
@@ -240,7 +240,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -256,14 +256,30 @@
             
             <div class="item-inner">
               <!--<p class="item-category">-->
-                <!--<a class="category-link" href="/categories/mysql/">mysql</a>-->
+                <!---->
               <!--</p>-->
               <p class="item-title">
-                <a href="/2018/10/31/MySQL的一些遗忘点/" class="title">MySQL的一些遗忘点</a>
+                <a href="/2018/11/20/Docker构建Epics/" class="title">(no title)</a>
               </p>
               <p class="item-date">
                 <i class="icon icon-calendar-plus"></i>
-                <time datetime="2018-10-31T05:59:00.000Z" itemprop="datePublished">2018-10-31</time>
+                <time datetime="2018-11-20T07:43:25.517Z" itemprop="datePublished">2018-11-20</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category">-->
+                <!---->
+              <!--</p>-->
+              <p class="item-title">
+                <a href="/2018/11/20/Epics编译安装/" class="title">(no title)</a>
+              </p>
+              <p class="item-date">
+                <i class="icon icon-calendar-plus"></i>
+                <time datetime="2018-11-20T01:14:18.886Z" itemprop="datePublished">2018-11-20</time>
               </p>
             </div>
           </li>
@@ -275,7 +291,23 @@
                 <!--<a class="category-link" href="/categories/spring-boot/">spring boot</a>-->
               <!--</p>-->
               <p class="item-title">
-                <a href="/2018/10/31/SpringBoot Junit单元测试/" class="title">SpringBoot Junit单元测试</a>
+                <a href="/2018/11/11/Spring Boot 自动配置(autoconfigure)原理/" class="title">Spring Boot 自动配置(autoconfigure)原理</a>
+              </p>
+              <p class="item-date">
+                <i class="icon icon-calendar-plus"></i>
+                <time datetime="2018-11-11T15:59:59.000Z" itemprop="datePublished">2018-11-11</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category">-->
+                <!--<a class="category-link" href="/categories/mysql/">mysql</a>-->
+              <!--</p>-->
+              <p class="item-title">
+                <a href="/2018/10/31/MySQL的一些遗忘点/" class="title">MySQL的一些遗忘点</a>
               </p>
               <p class="item-date">
                 <i class="icon icon-calendar-plus"></i>
@@ -300,38 +332,6 @@
             </div>
           </li>
           
-          <li>
-            
-            <div class="item-inner">
-              <!--<p class="item-category">-->
-                <!--<a class="category-link" href="/categories/elasticsearch/">elasticsearch</a>-->
-              <!--</p>-->
-              <p class="item-title">
-                <a href="/2018/10/31/我的ElasticSearch命令简记/" class="title">我的ElasticSearch命令简记</a>
-              </p>
-              <p class="item-date">
-                <i class="icon icon-calendar-plus"></i>
-                <time datetime="2018-10-31T05:59:00.000Z" itemprop="datePublished">2018-10-31</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <!--<p class="item-category">-->
-                <!--<a class="category-link" href="/categories/docker/">docker</a>-->
-              <!--</p>-->
-              <p class="item-title">
-                <a href="/2018/10/22/Docker安装nginx/" class="title">Docker安装nginx</a>
-              </p>
-              <p class="item-date">
-                <i class="icon icon-calendar-plus"></i>
-                <time datetime="2018-10-22T04:34:08.000Z" itemprop="datePublished">2018-10-22</time>
-              </p>
-            </div>
-          </li>
-          
       </ul>
     </div>
   </div>
@@ -347,7 +347,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Group-By-和-Order-By-一起使用"><span class="toc-number">1.</span> <span class="toc-text">一、Group By 和 Order By 一起使用</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Group-By-和-Order-By-一起使用"><span class="toc-number">1.</span> <span class="toc-text">一、Group By 和 Order By 一起使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、忘记root密码"><span class="toc-number">2.</span> <span class="toc-text">二、忘记root密码</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -391,7 +391,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/31/MySQL的一些遗忘点/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 57(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 289(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
@@ -403,6 +403,19 @@
       
         <h2 id="一、Group-By-和-Order-By-一起使用"><a href="#一、Group-By-和-Order-By-一起使用" class="headerlink" title="一、Group By 和 Order By 一起使用"></a>一、Group By 和 Order By 一起使用</h2><p>order by 的列，必须是出现在group by 子句里的列 </p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MAX</span>( <span class="string">`id`</span> ) <span class="keyword">FROM</span> <span class="string">`order`</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="string">`order_code`</span> , <span class="string">`created_at`</span></span><br><span class="line"><span class="comment">-- order by 的列，必须是出现在 group by 子句里的列 </span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="string">`created_at`</span> <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="二、忘记root密码"><a href="#二、忘记root密码" class="headerlink" title="二、忘记root密码"></a>二、忘记root密码</h2><p>具体步骤如下：</p>
+<ol>
+<li><p>修改MySQL的配置文件（默认为/etc/my.cnf）,在[mysqld]下添加一行skip-grant-tables</p>
+</li>
+<li><p>保存配置文件后，重启MySQL服务 service mysqld restart</p>
+</li>
+<li><p>再次进入MySQL命令行 mysql -uroot -p,输入密码时直接回车，就会进入MySQL数据库了，这个时候按照常规流程修改root密码即可。依次输入：</p>
+<blockquote>
+<p>use mysql;    更改数据库<br>UPDATE user SET authentication_string=password(“passwd”) WHERE USER= ‘root’;  重设密码,注意我用的是5.7.22的数据库密码存储在authentication_string字段, 之前有的版本存储在password字段,具体看情况吧<br>flush privileges;  刷新MySQL的系统权限相关表，以防止更改后拒绝访问；或或者重启MySQL服务器</p>
+</blockquote>
+</li>
+<li>密码修改完毕后，再按照步骤1中的流程，删掉配置文件中的那行，并且重启MySQL服务，新密码就生效了。</li>
+</ol>
 
       
     </div>
@@ -458,9 +471,13 @@
   
   <ul class="pager pull-left">
     
+    <li class="prev">
+      <a href="/2018/11/11/Spring Boot 自动配置(autoconfigure)原理/" title="Spring Boot 自动配置(autoconfigure)原理"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
     
     <li class="next">
-      <a href="/2018/10/31/SpringBoot Junit单元测试/" title="SpringBoot Junit单元测试"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2018/10/31/SpringBoot+H2+Mybatis单元测试整合和坑/" title="SpringBoot+H2+Mybatis单元测试整合和坑"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

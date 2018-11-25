@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.milk4j.com/2018/10/31/%E6%88%91%E7%9A%84ElasticSearch%E5%91%BD%E4%BB%A4%E7%AE%80%E8%AE%B0/</loc>
+    <loc>https://blog.milk4j.com/2018/10/22/java%E5%BA%94%E7%94%A8jvm%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE%E5%8F%82%E8%80%83/</loc>
     
-    <lastmod>2018-11-06T11:59:22.121Z</lastmod>
+    <lastmod>2018-11-25T09:58:47.002Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.milk4j.com/2018/11/11/Spring%20Boot%20%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE(autoconfigure)%E5%8E%9F%E7%90%86/</loc>
+    
+    <lastmod>2018-11-25T09:54:54.622Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.milk4j.com/2018/11/20/Epics%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</loc>
+    
+    <lastmod>2018-11-21T05:21:01.666Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.milk4j.com/2018/11/20/Docker%E6%9E%84%E5%BB%BAEpics/</loc>
+    
+    <lastmod>2018-11-20T10:56:03.384Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.milk4j.com/2018/10/31/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%81%97%E5%BF%98%E7%82%B9/</loc>
     
-    <lastmod>2018-11-03T17:13:17.195Z</lastmod>
+    <lastmod>2018-11-19T10:33:48.724Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.milk4j.com/2018/10/31/%E6%88%91%E7%9A%84ElasticSearch%E5%91%BD%E4%BB%A4%E7%AE%80%E8%AE%B0/</loc>
+    
+    <lastmod>2018-11-06T11:59:22.121Z</lastmod>
     
   </url>
   
@@ -117,6 +145,27 @@
     <loc>https://blog.milk4j.com/books/index.html</loc>
     
     <lastmod>2018-10-21T15:06:46.286Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.milk4j.com/2018/05/25/Docker%20%E5%AE%89%E8%A3%85%20nginx/</loc>
+    
+    <lastmod>2018-06-08T18:00:03.879Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.milk4j.com/2018/05/26/Docker%20%E5%AE%89%E8%A3%85%20redis/</loc>
+    
+    <lastmod>2018-06-08T06:26:41.693Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.milk4j.com/2018/05/25/%E3%80%9002%E3%80%91Docker%20%E4%BD%BF%E7%94%A8/</loc>
+    
+    <lastmod>2018-05-25T14:28:18.719Z</lastmod>
     
   </url>
   
