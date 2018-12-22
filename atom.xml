@@ -44,6 +44,31 @@
   </entry>
   
   <entry>
+    <title>MySQL的一些遗忘点</title>
+    <link href="https://blog.milk4j.com/2018/10/31/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%81%97%E5%BF%98%E7%82%B9/"/>
+    <id>https://blog.milk4j.com/2018/10/31/MySQL的一些遗忘点/</id>
+    <published>2018-10-31T05:59:00.000Z</published>
+    <updated>2018-11-19T10:33:48.724Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、Group-By-和-Order-By-一起使用"><a href="#一、Group-By-和-Order-By-一起使用" class="headerlink" title="一、Group By 和 Order By 一起使用"></a>一、Group By 和 Order By 一起使用</h2><p>order by 的列，必须是出现在group by 子句里的列 </p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MAX</span>( <span class="string">`id`</span> ) <span class="keyword">FROM</span> <span class="string">`order`</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="string">`order_code`</span> , <span class="string">`created_at`</span></span><br><span class="line"><span class="comment">-- order by 的列，必须是出现在 group by 子句里的列 </span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="string">`created_at`</span> <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure><h2 id="二、忘记root密码"><a href="#二、忘记root密码" class="headerlink" title="二、忘记root密码"></a>二、忘记root密码</h2><p>具体步骤如下：</p><ol><li><p>修改MySQL的配置文件（默认为/etc/my.cnf）,在[mysqld]下添加一行skip-grant-tables</p></li><li><p>保存配置文件后，重启MySQL服务 service mysqld restart</p></li><li><p>再次进入MySQL命令行 mysql -uroot -p,输入密码时直接回车，就会进入MySQL数据库了，这个时候按照常规流程修改root密码即可。依次输入：</p><blockquote><p>use mysql;    更改数据库<br>UPDATE user SET authentication_string=password(“passwd”) WHERE USER= ‘root’;  重设密码,注意我用的是5.7.22的数据库密码存储在authentication_string字段, 之前有的版本存储在password字段,具体看情况吧<br>flush privileges;  刷新MySQL的系统权限相关表，以防止更改后拒绝访问；或或者重启MySQL服务器</p></blockquote></li><li>密码修改完毕后，再按照步骤1中的流程，删掉配置文件中的那行，并且重启MySQL服务，新密码就生效了。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;一、Group-By-和-Order-By-一起使用&quot;&gt;&lt;a href=&quot;#一、Group-By-和-Order-By-一起使用&quot; class=&quot;headerlink&quot; title=&quot;一、Group By 和 Order By 一起使用&quot;&gt;&lt;/a&gt;一、Group 
+      
+    
+    </summary>
+    
+      <category term="mysql" scheme="https://blog.milk4j.com/categories/mysql/"/>
+    
+    
+      <category term="mysql" scheme="https://blog.milk4j.com/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SpringBoot Junit单元测试</title>
     <link href="https://blog.milk4j.com/2018/10/31/SpringBoot%20Junit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
     <id>https://blog.milk4j.com/2018/10/31/SpringBoot Junit单元测试/</id>
@@ -68,31 +93,6 @@
       <category term="Junit" scheme="https://blog.milk4j.com/tags/Junit/"/>
     
       <category term="单元测试" scheme="https://blog.milk4j.com/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL的一些遗忘点</title>
-    <link href="https://blog.milk4j.com/2018/10/31/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%81%97%E5%BF%98%E7%82%B9/"/>
-    <id>https://blog.milk4j.com/2018/10/31/MySQL的一些遗忘点/</id>
-    <published>2018-10-31T05:59:00.000Z</published>
-    <updated>2018-11-19T10:33:48.724Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="一、Group-By-和-Order-By-一起使用"><a href="#一、Group-By-和-Order-By-一起使用" class="headerlink" title="一、Group By 和 Order By 一起使用"></a>一、Group By 和 Order By 一起使用</h2><p>order by 的列，必须是出现在group by 子句里的列 </p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MAX</span>( <span class="string">`id`</span> ) <span class="keyword">FROM</span> <span class="string">`order`</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="string">`order_code`</span> , <span class="string">`created_at`</span></span><br><span class="line"><span class="comment">-- order by 的列，必须是出现在 group by 子句里的列 </span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="string">`created_at`</span> <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure><h2 id="二、忘记root密码"><a href="#二、忘记root密码" class="headerlink" title="二、忘记root密码"></a>二、忘记root密码</h2><p>具体步骤如下：</p><ol><li><p>修改MySQL的配置文件（默认为/etc/my.cnf）,在[mysqld]下添加一行skip-grant-tables</p></li><li><p>保存配置文件后，重启MySQL服务 service mysqld restart</p></li><li><p>再次进入MySQL命令行 mysql -uroot -p,输入密码时直接回车，就会进入MySQL数据库了，这个时候按照常规流程修改root密码即可。依次输入：</p><blockquote><p>use mysql;    更改数据库<br>UPDATE user SET authentication_string=password(“passwd”) WHERE USER= ‘root’;  重设密码,注意我用的是5.7.22的数据库密码存储在authentication_string字段, 之前有的版本存储在password字段,具体看情况吧<br>flush privileges;  刷新MySQL的系统权限相关表，以防止更改后拒绝访问；或或者重启MySQL服务器</p></blockquote></li><li>密码修改完毕后，再按照步骤1中的流程，删掉配置文件中的那行，并且重启MySQL服务，新密码就生效了。</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;一、Group-By-和-Order-By-一起使用&quot;&gt;&lt;a href=&quot;#一、Group-By-和-Order-By-一起使用&quot; class=&quot;headerlink&quot; title=&quot;一、Group By 和 Order By 一起使用&quot;&gt;&lt;/a&gt;一、Group 
-      
-    
-    </summary>
-    
-      <category term="mysql" scheme="https://blog.milk4j.com/categories/mysql/"/>
-    
-    
-      <category term="mysql" scheme="https://blog.milk4j.com/tags/mysql/"/>
     
   </entry>
   
@@ -361,27 +361,27 @@
   </entry>
   
   <entry>
-    <title>Greys 使用手册 [快速入门]</title>
-    <link href="https://blog.milk4j.com/2018/07/05/Greys%20%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%5B%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%5D/"/>
-    <id>https://blog.milk4j.com/2018/07/05/Greys 使用手册[快速入门]/</id>
+    <title>Arthas 使用文档</title>
+    <link href="https://blog.milk4j.com/2018/07/05/Arthas%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/"/>
+    <id>https://blog.milk4j.com/2018/07/05/Arthas使用文档/</id>
     <published>2018-07-05T14:59:00.000Z</published>
-    <updated>2018-12-22T06:32:51.097Z</updated>
+    <updated>2018-12-22T06:47:23.887Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Greys-使用手册-快速入门"><a href="#Greys-使用手册-快速入门" class="headerlink" title="Greys 使用手册[快速入门]"></a>Greys 使用手册[快速入门]</h1><h2 id="启动Greys"><a href="#启动Greys" class="headerlink" title="启动Greys"></a>启动Greys</h2><h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./greys &lt;PID&gt;[@IP:PORT]</span><br></pre></td></tr></table></figure><ul><li><strong>PID：</strong>目标Java进程ID（请确保执行当前执行命令的用户必须有足够的权限操作对应的Java进程）</li><li><strong>IP：</strong>目标服务器IP地址，当远程服务开启之后，其他人可以通过指定IP的形式加载到对应目标机器的Java进程中，从而实现远程协助。专门用于解决目标主机账号没有权限，但对方兄弟却非常需要你支援的时候。Greys允许多个用户同时访问，并且各自的命令不会相互干扰执行。</li><li><strong>PORT：</strong>目标服务器端口号，设计端口号的初心则是希望解决同台机器上存在多个Java进程需要被Greys分析的情况，默认的端口号是3658，如果不做区分则会引起端口冲突。</li></ul><h3 id="启动范例"><a href="#启动范例" class="headerlink" title="启动范例"></a>启动范例</h3><ul><li><p>如果不指定<strong>IP</strong>和<strong>PORT</strong>，默认是<strong>127.0.0.1</strong>和<strong>3658</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./greys.sh 12345</span><br></pre></td></tr></table></figure><p>等价于</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./greys.sh 12345@127.0.0.1</span><br></pre></td></tr></table></figure><p>等价于</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./greys.sh 12356@127.0.0.1:3658</span><br></pre></td></tr></table></figure></li></ul><h3 id="会话与任务"><a href="#会话与任务" class="headerlink" title="会话与任务"></a>会话与任务</h3><p>Greys是一个C/S架构的程序，所以当Client访问到Server时，Server会维护一个session（会话），以及session的心跳、超时机制。事务（Tx）机制则是建立在session的基础上，所有的命令交互都会创建一个事务，并且产生对应的队列进行输出缓冲。</p><p>事务伴随着命令的生命周期而存在，命令分两种：</p><ul><li><p>立即返回</p><p>立即返回的命令定义是：敲下命令后Server端立即返回最终结果，后续无持续反馈信息，释放Client对输入的锁定，重新开放让用户输入信息，比如<strong>version</strong>、<strong>sc</strong>、<strong>sm</strong>等。</p></li><li><p>等待中止</p><p>等待中止的命令则是需要用户主动输入<strong>Ctrl+D</strong>完成的命令中止操作。命令执行后无法立即返回最终结果，而是不断的将中间产生的输出源源不断的输出到客户端中，这种命令比如<strong>stack</strong>、<strong>monitor</strong>等。</p></li></ul><p>当session关闭时，所有挂在session的事务也会立即被关闭。</p><h2 id="重要命令"><a href="#重要命令" class="headerlink" title="重要命令"></a>重要命令</h2><table><thead><tr><th>命令</th><th>说明</th></tr></thead><tbody><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#help" target="_blank" rel="noopener">help</a></td><td>查看命令的帮助文档，每个命令和参数都有很详细的说明</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#sc" target="_blank" rel="noopener">sc</a></td><td>查看JVM已加载的类信息</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#sm" target="_blank" rel="noopener">sm</a></td><td>查看已加载的方法信息</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#monitor" target="_blank" rel="noopener">monitor</a></td><td>方法执行监控</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#trace" target="_blank" rel="noopener">trace</a></td><td>渲染方法内部调用路径，并输出方法路径上的每个节点上耗时</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#ptrace" target="_blank" rel="noopener">ptrace</a></td><td>强化版的<code>trace</code>命令。通过指定渲染路径，并可记录下路径中所有方法的入参、返值；与<code>tt</code>命令联动。</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#watch" target="_blank" rel="noopener">watch</a></td><td>方法执行数据观测</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#tt" target="_blank" rel="noopener">tt</a> <a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/TimeTunnel" target="_blank" rel="noopener">详细用法</a></td><td>方法执行数据的时空隧道，记录下指定方法每次调用的入参和返回信息，并能对这些不同的时间下调用进行观测</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#stack" target="_blank" rel="noopener">stack</a></td><td>输出当前方法被调用的调用路径</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#version" target="_blank" rel="noopener">version</a></td><td>输出当前目标Java进程所加载的Greys版本号</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#quit" target="_blank" rel="noopener">quit</a></td><td>退出greys客户端</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#shutdown" target="_blank" rel="noopener">shutdown</a></td><td>关闭greys服务端</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#reset" target="_blank" rel="noopener">reset</a></td><td>重置增强类，将被greys增强过的类全部还原</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#jvm" target="_blank" rel="noopener">jvm</a></td><td>查看当前JVM的信息</td></tr></tbody></table><h2 id="重要类结构"><a href="#重要类结构" class="headerlink" title="重要类结构"></a>重要类结构</h2><p>用于watch/tt命令，grovvy表达式的重要数据结构</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Advice</span><br><span class="line">   |</span><br><span class="line">   +--ClassLoader loader    (ClassLoader)</span><br><span class="line">   +--Class&lt;?&gt;    clazz     (目标类)</span><br><span class="line">   +--GaMethod    method    (目标方法，包括普通方法和构造函数)</span><br><span class="line">   +--Object[]    params    (调用参数)</span><br><span class="line">   +--Object      returnObj (返回值)</span><br><span class="line">   `--Throwable   throwExp  (抛出异常)</span><br></pre></td></tr></table></figure><p>在表达式中直接使用变量名，例如</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -b *StringUtil* isEmpty params[0].length()</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="Arthas-使用文档"><a href="#Arthas-使用文档" class="headerlink" title="Arthas 使用文档"></a>Arthas 使用文档</h1><p>Arthas 是基于 Greys 开发的, 所以命令基本通用</p><p><a href="https://alibaba.github.io/arthas/" target="_blank" rel="noopener">https://alibaba.github.io/arthas/</a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;Greys-使用手册-快速入门&quot;&gt;&lt;a href=&quot;#Greys-使用手册-快速入门&quot; class=&quot;headerlink&quot; title=&quot;Greys 使用手册[快速入门]&quot;&gt;&lt;/a&gt;Greys 使用手册[快速入门]&lt;/h1&gt;&lt;h2 id=&quot;启动Greys&quot;&gt;&lt;a
+        &lt;h1 id=&quot;Arthas-使用文档&quot;&gt;&lt;a href=&quot;#Arthas-使用文档&quot; class=&quot;headerlink&quot; title=&quot;Arthas 使用文档&quot;&gt;&lt;/a&gt;Arthas 使用文档&lt;/h1&gt;&lt;p&gt;Arthas 是基于 Greys 开发的, 所以命令基本通用&lt;/p&gt;
       
     
     </summary>
     
-      <category term="greys" scheme="https://blog.milk4j.com/categories/greys/"/>
+      <category term="Arthas" scheme="https://blog.milk4j.com/categories/Arthas/"/>
     
     
-      <category term="greys" scheme="https://blog.milk4j.com/tags/greys/"/>
+      <category term="Arthas" scheme="https://blog.milk4j.com/tags/Arthas/"/>
     
   </entry>
   
@@ -399,6 +399,31 @@
       
       
         &lt;h1 id=&quot;Greys-使用手册-安装&quot;&gt;&lt;a href=&quot;#Greys-使用手册-安装&quot; class=&quot;headerlink&quot; title=&quot;Greys 使用手册 [安装]&quot;&gt;&lt;/a&gt;Greys 使用手册 [安装]&lt;/h1&gt;&lt;p&gt;Greys支持在线安装和本地安装两种安装方案
+      
+    
+    </summary>
+    
+      <category term="greys" scheme="https://blog.milk4j.com/categories/greys/"/>
+    
+    
+      <category term="greys" scheme="https://blog.milk4j.com/tags/greys/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Greys 使用手册 [快速入门]</title>
+    <link href="https://blog.milk4j.com/2018/07/05/Greys%20%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%5B%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%5D/"/>
+    <id>https://blog.milk4j.com/2018/07/05/Greys 使用手册[快速入门]/</id>
+    <published>2018-07-05T14:59:00.000Z</published>
+    <updated>2018-12-22T06:32:51.097Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Greys-使用手册-快速入门"><a href="#Greys-使用手册-快速入门" class="headerlink" title="Greys 使用手册[快速入门]"></a>Greys 使用手册[快速入门]</h1><h2 id="启动Greys"><a href="#启动Greys" class="headerlink" title="启动Greys"></a>启动Greys</h2><h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./greys &lt;PID&gt;[@IP:PORT]</span><br></pre></td></tr></table></figure><ul><li><strong>PID：</strong>目标Java进程ID（请确保执行当前执行命令的用户必须有足够的权限操作对应的Java进程）</li><li><strong>IP：</strong>目标服务器IP地址，当远程服务开启之后，其他人可以通过指定IP的形式加载到对应目标机器的Java进程中，从而实现远程协助。专门用于解决目标主机账号没有权限，但对方兄弟却非常需要你支援的时候。Greys允许多个用户同时访问，并且各自的命令不会相互干扰执行。</li><li><strong>PORT：</strong>目标服务器端口号，设计端口号的初心则是希望解决同台机器上存在多个Java进程需要被Greys分析的情况，默认的端口号是3658，如果不做区分则会引起端口冲突。</li></ul><h3 id="启动范例"><a href="#启动范例" class="headerlink" title="启动范例"></a>启动范例</h3><ul><li><p>如果不指定<strong>IP</strong>和<strong>PORT</strong>，默认是<strong>127.0.0.1</strong>和<strong>3658</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./greys.sh 12345</span><br></pre></td></tr></table></figure><p>等价于</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./greys.sh 12345@127.0.0.1</span><br></pre></td></tr></table></figure><p>等价于</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./greys.sh 12356@127.0.0.1:3658</span><br></pre></td></tr></table></figure></li></ul><h3 id="会话与任务"><a href="#会话与任务" class="headerlink" title="会话与任务"></a>会话与任务</h3><p>Greys是一个C/S架构的程序，所以当Client访问到Server时，Server会维护一个session（会话），以及session的心跳、超时机制。事务（Tx）机制则是建立在session的基础上，所有的命令交互都会创建一个事务，并且产生对应的队列进行输出缓冲。</p><p>事务伴随着命令的生命周期而存在，命令分两种：</p><ul><li><p>立即返回</p><p>立即返回的命令定义是：敲下命令后Server端立即返回最终结果，后续无持续反馈信息，释放Client对输入的锁定，重新开放让用户输入信息，比如<strong>version</strong>、<strong>sc</strong>、<strong>sm</strong>等。</p></li><li><p>等待中止</p><p>等待中止的命令则是需要用户主动输入<strong>Ctrl+D</strong>完成的命令中止操作。命令执行后无法立即返回最终结果，而是不断的将中间产生的输出源源不断的输出到客户端中，这种命令比如<strong>stack</strong>、<strong>monitor</strong>等。</p></li></ul><p>当session关闭时，所有挂在session的事务也会立即被关闭。</p><h2 id="重要命令"><a href="#重要命令" class="headerlink" title="重要命令"></a>重要命令</h2><table><thead><tr><th>命令</th><th>说明</th></tr></thead><tbody><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#help" target="_blank" rel="noopener">help</a></td><td>查看命令的帮助文档，每个命令和参数都有很详细的说明</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#sc" target="_blank" rel="noopener">sc</a></td><td>查看JVM已加载的类信息</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#sm" target="_blank" rel="noopener">sm</a></td><td>查看已加载的方法信息</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#monitor" target="_blank" rel="noopener">monitor</a></td><td>方法执行监控</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#trace" target="_blank" rel="noopener">trace</a></td><td>渲染方法内部调用路径，并输出方法路径上的每个节点上耗时</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#ptrace" target="_blank" rel="noopener">ptrace</a></td><td>强化版的<code>trace</code>命令。通过指定渲染路径，并可记录下路径中所有方法的入参、返值；与<code>tt</code>命令联动。</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#watch" target="_blank" rel="noopener">watch</a></td><td>方法执行数据观测</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#tt" target="_blank" rel="noopener">tt</a> <a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/TimeTunnel" target="_blank" rel="noopener">详细用法</a></td><td>方法执行数据的时空隧道，记录下指定方法每次调用的入参和返回信息，并能对这些不同的时间下调用进行观测</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#stack" target="_blank" rel="noopener">stack</a></td><td>输出当前方法被调用的调用路径</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#version" target="_blank" rel="noopener">version</a></td><td>输出当前目标Java进程所加载的Greys版本号</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#quit" target="_blank" rel="noopener">quit</a></td><td>退出greys客户端</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#shutdown" target="_blank" rel="noopener">shutdown</a></td><td>关闭greys服务端</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#reset" target="_blank" rel="noopener">reset</a></td><td>重置增强类，将被greys增强过的类全部还原</td></tr><tr><td><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/Commands#jvm" target="_blank" rel="noopener">jvm</a></td><td>查看当前JVM的信息</td></tr></tbody></table><h2 id="重要类结构"><a href="#重要类结构" class="headerlink" title="重要类结构"></a>重要类结构</h2><p>用于watch/tt命令，grovvy表达式的重要数据结构</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Advice</span><br><span class="line">   |</span><br><span class="line">   +--ClassLoader loader    (ClassLoader)</span><br><span class="line">   +--Class&lt;?&gt;    clazz     (目标类)</span><br><span class="line">   +--GaMethod    method    (目标方法，包括普通方法和构造函数)</span><br><span class="line">   +--Object[]    params    (调用参数)</span><br><span class="line">   +--Object      returnObj (返回值)</span><br><span class="line">   `--Throwable   throwExp  (抛出异常)</span><br></pre></td></tr></table></figure><p>在表达式中直接使用变量名，例如</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -b *StringUtil* isEmpty params[0].length()</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Greys-使用手册-快速入门&quot;&gt;&lt;a href=&quot;#Greys-使用手册-快速入门&quot; class=&quot;headerlink&quot; title=&quot;Greys 使用手册[快速入门]&quot;&gt;&lt;/a&gt;Greys 使用手册[快速入门]&lt;/h1&gt;&lt;h2 id=&quot;启动Greys&quot;&gt;&lt;a
       
     
     </summary>
@@ -508,31 +533,6 @@
     
     
       <category term="springboot" scheme="https://blog.milk4j.com/tags/springboot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker基本使用</title>
-    <link href="https://blog.milk4j.com/2018/06/22/Docker%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
-    <id>https://blog.milk4j.com/2018/06/22/Docker基本使用/</id>
-    <published>2018-06-22T03:26:02.000Z</published>
-    <updated>2018-10-22T11:13:20.539Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="一-docker使用"><a href="#一-docker使用" class="headerlink" title="一. docker使用"></a>一. docker使用</h4><h5 id="1-docker-ps-查看运行中的容器"><a href="#1-docker-ps-查看运行中的容器" class="headerlink" title="1. docker ps 查看运行中的容器"></a>1. docker ps 查看运行中的容器</h5><h5 id="2-docker-images-查看docker镜像"><a href="#2-docker-images-查看docker镜像" class="headerlink" title="2. docker images 查看docker镜像"></a>2. docker images 查看docker镜像</h5><h5 id="3-docker-rm-id-容器id-删除容器（容器id可以通过docker-ps查看，容器必须停止后才能删除）"><a href="#3-docker-rm-id-容器id-删除容器（容器id可以通过docker-ps查看，容器必须停止后才能删除）" class="headerlink" title="3. docker rm id(容器id)  删除容器（容器id可以通过docker ps查看，容器必须停止后才能删除）"></a>3. docker rm id(容器id)  删除容器（容器id可以通过docker ps查看，容器必须停止后才能删除）</h5><h6 id="3-1-删除全部的容器-docker-rm-docker-ps-a-q"><a href="#3-1-删除全部的容器-docker-rm-docker-ps-a-q" class="headerlink" title="3.1 删除全部的容器 docker rm docker ps -a -q"></a>3.1 删除全部的容器 docker rm <code>docker ps -a -q</code></h6><h5 id="4-docker-stop-id-容器id-停止容器运行"><a href="#4-docker-stop-id-容器id-停止容器运行" class="headerlink" title="4. docker stop  id(容器id) 停止容器运行"></a>4. docker stop  id(容器id) 停止容器运行</h5><h5 id="5-docker-rmi-id-镜像id-删除镜像"><a href="#5-docker-rmi-id-镜像id-删除镜像" class="headerlink" title="5. docker rmi  id(镜像id) 删除镜像"></a>5. docker rmi  id(镜像id) 删除镜像</h5><h5 id="6-docker-pull-ubuntu-16-04-镜像名称-版本号-下载镜像"><a href="#6-docker-pull-ubuntu-16-04-镜像名称-版本号-下载镜像" class="headerlink" title="6. docker pull ubuntu:16.04(镜像名称:版本号) 下载镜像"></a>6. docker pull ubuntu:16.04(镜像名称:版本号) 下载镜像</h5><h5 id="7-docker-run-it-ubuntu-16-04-创建并运行容器容器"><a href="#7-docker-run-it-ubuntu-16-04-创建并运行容器容器" class="headerlink" title="7. docker run -it ubuntu:16.04 创建并运行容器容器"></a>7. docker run -it ubuntu:16.04 创建并运行容器容器</h5><p>　　　　-t 表示在新容器内指定一个伪终端或终端</p><p>　　　　-i 表示允许我们对容器内的 (STDIN) 进行交互</p><p>　　　　-p 指定映射端口</p><p>　　　　-d 在后台运行容器并打印容器ID</p><h6 id="7-1-docker-run-dit-ubuntu-16-04-创建并后台运行容器"><a href="#7-1-docker-run-dit-ubuntu-16-04-创建并后台运行容器" class="headerlink" title="7.1 docker run -dit ubuntu:16.04 创建并后台运行容器"></a>7.1 docker run -dit ubuntu:16.04 创建并后台运行容器</h6><h6 id="7-2-docker-run-ditp-8080-8080（主机端口-容器端口）-ubuntu-16-04-创建并后台运行容器且映射容器的端口"><a href="#7-2-docker-run-ditp-8080-8080（主机端口-容器端口）-ubuntu-16-04-创建并后台运行容器且映射容器的端口" class="headerlink" title="7.2 docker run -ditp 8080:8080（主机端口:容器端口） ubuntu:16.04 创建并后台运行容器且映射容器的端口"></a>7.2 docker run -ditp 8080:8080（主机端口:容器端口） ubuntu:16.04 创建并后台运行容器且映射容器的端口</h6><h5 id="8-docker-attach-id-容器id-进入正在运行中的容器环境"><a href="#8-docker-attach-id-容器id-进入正在运行中的容器环境" class="headerlink" title="8. docker attach id(容器id) 进入正在运行中的容器环境"></a>8. docker attach id(容器id) 进入正在运行中的容器环境</h5><h5 id="9-退出容器"><a href="#9-退出容器" class="headerlink" title="9. 退出容器"></a>9. 退出容器</h5><h6 id="9-1-exit-直接退出容器并终止容器运行"><a href="#9-1-exit-直接退出容器并终止容器运行" class="headerlink" title="9.1 exit 直接退出容器并终止容器运行"></a>9.1 exit 直接退出容器并终止容器运行</h6><h6 id="9-2-ctrl-p-ctrl-q-（快捷键）-退出容器，但是不会终止容器运行"><a href="#9-2-ctrl-p-ctrl-q-（快捷键）-退出容器，但是不会终止容器运行" class="headerlink" title="9.2 [ctrl+p]+[ctrl+q]（快捷键） 退出容器，但是不会终止容器运行"></a>9.2 [ctrl+p]+[ctrl+q]（快捷键） 退出容器，但是不会终止容器运行</h6><h5 id="10-docker-commit-m’版本标识’-id-容器id-ubuntu-16-04-镜像与版本号-提交镜像且生成镜像（可以通过该命令把搭建好的容器打包成一个新的镜像或者覆盖原镜像（即是修改原镜像内容，生成的镜像名与版本号相同就可以直接覆盖））"><a href="#10-docker-commit-m’版本标识’-id-容器id-ubuntu-16-04-镜像与版本号-提交镜像且生成镜像（可以通过该命令把搭建好的容器打包成一个新的镜像或者覆盖原镜像（即是修改原镜像内容，生成的镜像名与版本号相同就可以直接覆盖））" class="headerlink" title="10. docker commit -m’版本标识’ id(容器id) ubuntu:16.04(镜像与版本号)   提交镜像且生成镜像（可以通过该命令把搭建好的容器打包成一个新的镜像或者覆盖原镜像（即是修改原镜像内容，生成的镜像名与版本号相同就可以直接覆盖））"></a>10. docker commit -m’版本标识’ id(容器id) ubuntu:16.04(镜像与版本号)   提交镜像且生成镜像（可以通过该命令把搭建好的容器打包成一个新的镜像或者覆盖原镜像（即是修改原镜像内容，生成的镜像名与版本号相同就可以直接覆盖））</h5>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;一-docker使用&quot;&gt;&lt;a href=&quot;#一-docker使用&quot; class=&quot;headerlink&quot; title=&quot;一. docker使用&quot;&gt;&lt;/a&gt;一. docker使用&lt;/h4&gt;&lt;h5 id=&quot;1-docker-ps-查看运行中的容器&quot;&gt;&lt;a href=&quot;
-      
-    
-    </summary>
-    
-      <category term="docker" scheme="https://blog.milk4j.com/categories/docker/"/>
-    
-    
-      <category term="docker" scheme="https://blog.milk4j.com/tags/docker/"/>
     
   </entry>
   
