@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>docker 安装redis | JerrySimple</title>
+  <meta name="description" content="Docker 安装 Redis下载镜像|创建运行容器123docker pull redis#创建|运行容器docker run -d --name=myredis -p 6379:6379 redis 其他容器与 redis 容器通讯nginx容器需要与redis容器通信的话首先要知道它的ip地址，但是每次都手工获取容器的ip地址显然是一件繁琐的事情，于是我们需要修改容器的启动方式，加–link">
+<meta name="keywords" content="docker,redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker 安装redis">
+<meta property="og:url" content="https://blog.milk4j.com/2018/08/05/Docker 安装 redis/index.html">
+<meta property="og:site_name" content="Jerry Simple">
+<meta property="og:description" content="Docker 安装 Redis下载镜像|创建运行容器123docker pull redis#创建|运行容器docker run -d --name=myredis -p 6379:6379 redis 其他容器与 redis 容器通讯nginx容器需要与redis容器通信的话首先要知道它的ip地址，但是每次都手工获取容器的ip地址显然是一件繁琐的事情，于是我们需要修改容器的启动方式，加–link">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-b97bbd401b2f169c36a3b660206c1abe_hd.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-998b4229612939a15a00ec1905698ce4_hd.jpg">
+<meta property="og:updated_time" content="2018-12-22T06:29:46.888Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker 安装redis">
+<meta name="twitter:description" content="Docker 安装 Redis下载镜像|创建运行容器123docker pull redis#创建|运行容器docker run -d --name=myredis -p 6379:6379 redis 其他容器与 redis 容器通讯nginx容器需要与redis容器通信的话首先要知道它的ip地址，但是每次都手工获取容器的ip地址显然是一件繁琐的事情，于是我们需要修改容器的启动方式，加–link">
+<meta name="twitter:image" content="https://pic4.zhimg.com/80/v2-b97bbd401b2f169c36a3b660206c1abe_hd.jpg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://blog.milk4j.com/2018/08/05/Docker 安装 redis/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Jerry Simple" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+</head>
+
+
+<body class="main-center" itemscope itemtype="https://schema.org/WebPage">
+  <header class="header" itemscope="" itemtype="https://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/sunlightzy" target="_blank">
+          <img class="img-circle img-rotate" src="https://oscimg.oschina.net/oscnet/ec5be0d5bdd7e3094a04a246b07bc741ff7.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Jerry Simple</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">雨天配抄书,代码配咖啡</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> HangZhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech="">
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope="" itemtype="https://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/sunlightzy" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope="" itemtype="https://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/centos/">centos</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/elasticsearch/">elasticsearch</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/epics/">epics</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/greys/">greys</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/idea/">idea</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jvm/">jvm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/kotlin/">kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-boot/">spring boot</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/">springboot</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/常用命令/">常用命令</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Junit/">Junit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/epics/">epics</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greys/">greys</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2/">h2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jvm/">jvm</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/">kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-boot/">spring boot</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单元测试/">单元测试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/常用命令/">常用命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/远程debug/">远程debug</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Junit/" style="font-size: 13px;">Junit</a> <a href="/tags/centos/" style="font-size: 13px;">centos</a> <a href="/tags/docker/" style="font-size: 14px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 13.33px;">elasticsearch</a> <a href="/tags/epics/" style="font-size: 13.33px;">epics</a> <a href="/tags/greys/" style="font-size: 13.67px;">greys</a> <a href="/tags/h2/" style="font-size: 13px;">h2</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/idea/" style="font-size: 13px;">idea</a> <a href="/tags/jvm/" style="font-size: 13.33px;">jvm</a> <a href="/tags/kotlin/" style="font-size: 13px;">kotlin</a> <a href="/tags/mac/" style="font-size: 13px;">mac</a> <a href="/tags/mysql/" style="font-size: 13px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13px;">nginx</a> <a href="/tags/redis/" style="font-size: 13px;">redis</a> <a href="/tags/spring-boot/" style="font-size: 13.67px;">spring boot</a> <a href="/tags/springboot/" style="font-size: 13px;">springboot</a> <a href="/tags/单元测试/" style="font-size: 13.33px;">单元测试</a> <a href="/tags/常用命令/" style="font-size: 13px;">常用命令</a> <a href="/tags/远程debug/" style="font-size: 13px;">远程debug</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category">-->
+                <!--<a class="category-link" href="/categories/spring-boot/">spring boot</a>-->
+              <!--</p>-->
+              <p class="item-title">
+                <a href="/2018/11/11/Spring Boot 自动配置(autoconfigure)原理/" class="title">Spring Boot 自动配置(autoconfigure)原理</a>
+              </p>
+              <p class="item-date">
+                <i class="icon icon-calendar-plus"></i>
+                <time datetime="2018-11-11T15:59:59.000Z" itemprop="datePublished">2018-11-11</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category">-->
+                <!--<a class="category-link" href="/categories/spring-boot/">spring boot</a>-->
+              <!--</p>-->
+              <p class="item-title">
+                <a href="/2018/10/31/SpringBoot Junit单元测试/" class="title">SpringBoot Junit单元测试</a>
+              </p>
+              <p class="item-date">
+                <i class="icon icon-calendar-plus"></i>
+                <time datetime="2018-10-31T05:59:00.000Z" itemprop="datePublished">2018-10-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category">-->
+                <!--<a class="category-link" href="/categories/mysql/">mysql</a>-->
+              <!--</p>-->
+              <p class="item-title">
+                <a href="/2018/10/31/MySQL的一些遗忘点/" class="title">MySQL的一些遗忘点</a>
+              </p>
+              <p class="item-date">
+                <i class="icon icon-calendar-plus"></i>
+                <time datetime="2018-10-31T05:59:00.000Z" itemprop="datePublished">2018-10-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category">-->
+                <!--<a class="category-link" href="/categories/spring-boot/">spring boot</a>-->
+              <!--</p>-->
+              <p class="item-title">
+                <a href="/2018/10/31/SpringBoot+H2+Mybatis单元测试整合和坑/" class="title">SpringBoot+H2+Mybatis单元测试整合和坑</a>
+              </p>
+              <p class="item-date">
+                <i class="icon icon-calendar-plus"></i>
+                <time datetime="2018-10-31T05:59:00.000Z" itemprop="datePublished">2018-10-31</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <!--<p class="item-category">-->
+                <!--<a class="category-link" href="/categories/elasticsearch/">elasticsearch</a>-->
+              <!--</p>-->
+              <p class="item-title">
+                <a href="/2018/10/31/我的ElasticSearch命令简记/" class="title">我的ElasticSearch命令简记</a>
+              </p>
+              <p class="item-date">
+                <i class="icon icon-calendar-plus"></i>
+                <time datetime="2018-10-31T05:59:00.000Z" itemprop="datePublished">2018-10-31</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope="" itemtype="https://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker-安装-Redis"><span class="toc-number">1.</span> <span class="toc-text">Docker 安装 Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#下载镜像-创建运行容器"><span class="toc-number">1.0.0.0.1.</span> <span class="toc-text">下载镜像|创建运行容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#其他容器与-redis-容器通讯"><span class="toc-number">1.0.0.0.2.</span> <span class="toc-text">其他容器与 redis 容器通讯</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Redis-集群搭建"><span class="toc-number">1.0.0.0.3.</span> <span class="toc-text">Redis 集群搭建</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Docker 安装 redis" class="article article-type-post" itemscope="" itemtype="https://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      docker 安装redis
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/08/05/Docker 安装 redis/" class="article-date">
+	  <time datetime="2018-08-05T14:59:00.000Z" itemprop="datePublished">2018-08-05</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/docker/">docker</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/docker/">docker</a>, <a class="article-tag-link" href="/tags/redis/">redis</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/08/05/Docker 安装 redis/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 665(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="Docker-安装-Redis"><a href="#Docker-安装-Redis" class="headerlink" title="Docker 安装 Redis"></a>Docker 安装 Redis</h1><h5 id="下载镜像-创建运行容器"><a href="#下载镜像-创建运行容器" class="headerlink" title="下载镜像|创建运行容器"></a>下载镜像|创建运行容器</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull redis</span><br><span class="line"><span class="meta">#</span>创建|运行容器</span><br><span class="line">docker run -d --name=myredis -p 6379:6379 redis</span><br></pre></td></tr></table></figure>
+<h5 id="其他容器与-redis-容器通讯"><a href="#其他容器与-redis-容器通讯" class="headerlink" title="其他容器与 redis 容器通讯"></a>其他容器与 redis 容器通讯</h5><p>nginx容器需要与redis容器通信的话首先要知道它的ip地址，但是每次都手工获取容器的ip地址显然是一件繁琐的事情，于是我们需要修改容器的启动方式，加–link参数，建立其他容器与redis容器之间的联系。</p>
+<p>删除掉之前的容器，现在重新修改 nginx容器的启动方式：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 使用 pwd 变量</span><br><span class="line">cd ~/nginx &amp;&amp; docker run -it -p 80:80 --name=mynginx --link=myredis:db -v $PWD/www:/www -v $PWD/conf/nginx.conf:/etc/nginx/nginx.conf -v $PWD/logs:/wwwlogs -d nginx</span><br><span class="line"></span><br><span class="line">docker run -it -p 80:80 --name=web --link=app1:app1 --link=app2:app2 --link=app3:app3 -v $PWD/www:/www -v $PWD/conf/nginx.conf:/etc/nginx/nginx.conf -v $PWD/logs:/wwwlogs -d nginx</span><br></pre></td></tr></table></figure>
+<p>这次加入了两个参数：</p>
+<ul>
+<li><strong>-v /code:/usr/src/app</strong> 表示把宿主机上的/code目录挂载到容器内的/usr/src/app目录，可以通过直接管理宿主机上的挂载目录来管理容器内部的挂载目录。</li>
+<li><strong>–link=redis:db</strong> 表示把redis容器以db别名与该容器建立关系，在该容器内以db作为主机名表示了redis容器的主机地址。</li>
+</ul>
+<p>现在进入到其他容器，通过ping命令确认nginx容器能访问到redis容器：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ping db</span><br><span class="line">PING db (192.168.32.12): 56 data bytes</span><br><span class="line">64 bytes from 192.168.32.12: icmp_seq=0 ttl=64 time=0.463 ms</span><br><span class="line">64 bytes from 192.168.32.12: icmp_seq=1 ttl=64 time=0.086 ms</span><br><span class="line"><span class="meta">#</span>ping 命令找不到</span><br><span class="line"><span class="meta">$</span> apt-get update</span><br><span class="line"><span class="meta">$</span> apt-get install inetutils-ping</span><br></pre></td></tr></table></figure>
+<h5 id="Redis-集群搭建"><a href="#Redis-集群搭建" class="headerlink" title="Redis 集群搭建"></a>Redis 集群搭建</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>创建 redis master 容器</span><br><span class="line"><span class="meta">$</span> docker run -d --name=redis_master -p 6380:6379 redis</span><br><span class="line"><span class="meta">#</span>两个  redis slave 容器</span><br><span class="line"><span class="meta">$</span> docker run -d --name=redis_slave_1 -p 6380:6379 --link=redis_master:master redis redis-server --slaveof master 6379</span><br><span class="line"><span class="meta">$</span> docker run -d --name=redis_slave_2 -p 6381:6379 --link=redis_master:master redis redis-server --slaveof master 6379</span><br></pre></td></tr></table></figure>
+<p>现在写入到Redis主节点的数据都会在从节点上备份一份数据。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-b97bbd401b2f169c36a3b660206c1abe_hd.jpg" alt="img"></p>
+<p>为了防止 master 宕机，再由Sentinel集群根据投票选举出slave节点作为新的master。</p>
+<p>下面为Sentinel编写Dockerfile，在redis镜像的基础上作改动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM redis:latest</span><br><span class="line">COPY run-sentinel.sh /run-sentinel.sh</span><br><span class="line">COPY sentinel.conf /etc/sentinel.conf</span><br><span class="line">RUN chmod +x /run-sentinel.sh</span><br><span class="line">ENTRYPOINT ["/run-sentinel.sh"]</span><br></pre></td></tr></table></figure>
+<p>Sentinel的配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">port 26379</span><br><span class="line">dir /tmp</span><br><span class="line">sentinel monitor master redis-master 6379 2</span><br><span class="line">sentinel down-after-milliseconds master 30000</span><br><span class="line">sentinel parallel-syncs master 1</span><br><span class="line">sentinel failover-timeout master 180000</span><br></pre></td></tr></table></figure>
+<p>run-sentinel.sh：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">exec redis-server /etc/sentinel.conf --sentinel</span><br></pre></td></tr></table></figure>
+<p>构建出Sentinel的镜像文件，容器运行的方式类似于redis：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run -d --name=sentinel_1 --link=redis_master:redis-master [build_sentinel_image]</span><br><span class="line"><span class="meta">$</span> docker run -d --name=sentinel_2 --link=redis_master:redis-master [build_sentinel_image]</span><br><span class="line"><span class="meta">$</span> docker run -d --name=sentinel_3 --link=redis_master:redis-master [build_sentinel_image]</span><br></pre></td></tr></table></figure>
+<p>这下Sentinel的容器也搭建起来了，应用的结构图如下：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-998b4229612939a15a00ec1905698ce4_hd.jpg" alt=""></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://blog.milk4j.com/2018/08/05/Docker 安装 redis/" title="docker 安装redis" target="_blank" rel="external">https://blog.milk4j.com/2018/08/05/Docker 安装 redis/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/sunlightzy" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://oscimg.oschina.net/oscnet/ec5be0d5bdd7e3094a04a246b07bc741ff7.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/sunlightzy" target="_blank"><span class="text-dark">Jerry Simple</span><small class="ml-1x">雨天配抄书,代码配咖啡</small></a></h3>
+        <div>被编程耽误的歌手,业余艺术家</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom="">
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2018/08/05/Docker 安装 nginx/" title="docker 安装 nginx"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/08/05/Docker构建Epics/" title="Docker构建Epics"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="https://oscimg.oschina.net/oscnet/581bf3b48ecae7688c440fcd5155296e900.jpg" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="https://oscimg.oschina.net/oscnet/0c82a0e906ef1016bd0d495e5da9162c5f9.jpg" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope="" itemtype="https://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/sunlightzy" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <!-- <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div> -->
+</footer>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
